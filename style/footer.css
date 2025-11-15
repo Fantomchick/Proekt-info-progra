@@ -5,13 +5,6 @@ footer {
   width: 100%;
 }
 
-.close:hover{
-  color: blue;
-}
-#what:hover{
-  color: rgb(92, 90, 88);
-}
-
 .footer-info {
   color: white;
   font-size: 16pt;
@@ -23,38 +16,18 @@ footer {
   width: 30%;
   margin: 0 auto;
 }
-#close3{
-  display: none;
-}
-#close3:hover{
-  color: #0077FF;
-}
+
 .icon {
   width: 10%;
   height: 10%;
   fill: white;
   margin: 6%;
 }
-#marker{
-  color: crimson;
-}
-#marker:hover {
-  fill: #ffffff;
-}
 
-#building:hover {
-  fill: #bbb3b3;
+#telegram:hover {
+  fill: #229ED9;
 }
 
 #vk:hover {
   fill: #0077FF;
-}
-.nav-link:hover {
-  color: #000000;
-}
-#thumbs-up{
-  color: #1280ff;
-}
-#teacher{
-  color: coral;
 }

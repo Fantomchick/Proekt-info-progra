@@ -5,7 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="style/headerstyle.css">
+    <link rel="stylesheet" href="style/feedback.css">
+    <link rel="stylesheet" href="style/footer.css">
+    <link rel="stylesheet" href="style/interesting.css">
+    <link rel="stylesheet" href="style/nav.css">
     <!-- Bootstrap5.3.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <title>Document</title>
 </head>
@@ -13,7 +18,10 @@
     <!--Панель навигации  -->
     <nav class="navbar navbar-expand-xl navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Фанобщение</a>
+            <a class="navbar-brand" href="#">
+                <img src="img/generated-image-top.jpeg" width="30" height="30" class="d-inline-block align-top" alt="not found" loading="lazy"
+                Фанобщение
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarWithDropdown" aria-controls="navbarWithDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -23,22 +31,22 @@
                         <a class="nav-link active" aria-current="page" href="#">Главная</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">хз</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Pricing</a>
+                        <a class="nav-link" href="#">Перейти к общению</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown link</a>
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Интересное</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            <li><a class="dropdown-item" href="#">Интересное</a></li>
+                            <li><a class="dropdown-item" href="#">История создания и идея сайта</a></li>
+                            <li><a class="dropdown-item" href="#">О разработчиках</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                        <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Регистрация</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Вход</a>
+                    </li>                    
                 </ul>
             </div>
         </div>
@@ -48,15 +56,17 @@
         <div class="container text-white pt-5 roboto-italic overlay">
             <h1 class="ki-header-title">ФАНТОМ</h1>
             <h2 class="ki-header-title">ОБЩЕНИЕ</h2>
+            <h1 class="ki-header-title">(СЕКРЕТНОЕ)</h1>
             <p class="ki-text-header"></p>
         </div>       
     </header>
+    <br>
     <section id="interesting">
         <div class="container">
             <div class="row">
                 <div class="col-sm-12  d-flex justify-content-center">
                     <div class="title">
-                        <h2 class="title-main">Ваши возможности:] и ограничения:[, проше ваши ВиО</h2>
+                        <h2 class="title-main">Ваши возможности и ограничения, проше ваши ВиО</h2>
                     </div>
                 </div>                
             </div>
@@ -70,7 +80,7 @@
 
                         <div class="interesting-block">
                             <h3 class="interesting-title">Первое ВиО</h3>
-                            <p class="interesting-text">Участвуем в крупных соревнованиях и занимаем призовые места</p>
+                            <p class="interesting-text">Ты можешь обсуждать любые темы, но должен быть честными в своих высказываниях и не прибегать к обману и манипуляциям</p>
                         </div>
                     </div>
                 </div>
@@ -81,7 +91,7 @@
 
                         <div class="interesting-block">
                             <h3 class="interesting-title">Второе ВиО</h3>
-                            <p class="interesting-text">Все имеют профессиональное образование по физкультуре и большой опыт игры в волейбол</p>
+                            <p class="interesting-text">Ты можешь свободно выражать свое мнение, но любые угрозы, оскорбления и ненависть могут быть удалены</p>
                         </div>
                     </div>
                 </div>
@@ -92,7 +102,7 @@
 
                         <div class="interesting-block">
                             <h3 class="interesting-title">Третье ВиО</h3>
-                            <p class="interesting-text">Обучаем на высоком уровне, позволяющим получить спортивные разряды</p>
+                            <p class="interesting-text">Ты можешь сам создать тему для обсуждения, но при этом необходимо оставаться в рамках заданной темы</p>
                         </div>
                     </div>				
                 </div>
@@ -106,7 +116,7 @@
 
                         <div class="interesting-block">
                             <h3 class="interesting-title">Четвертое ВиО</h3>
-                            <p class="interesting-text">В нашей секции дружный коллектив и позитивная атмосфера</p>
+                            <p class="interesting-text">Ты можешь делиться личными историями и своими данными, но тебе нельзя раскрывать данные других без их согласия</p>
                         </div>
                     </div>
                 </div>
@@ -117,7 +127,7 @@
 						
                         <div class="interesting-block">
                             <h3 class="interesting-title">Пятое ВиО</h3>
-                            <p class="interesting-text">Практика совмещается с теорией, но первого больше</p>
+                            <p class="interesting-text">У тебя есть свобода в обсуждениях, но желательно не игноривовать других участников обсуждения без причины</p>
                         </div>
                     </div>
                 </div>
@@ -128,7 +138,7 @@
 
                         <div class="interesting-block">
                             <h3 class="interesting-title">Шестое ВиО</h3>
-                            <p class="interesting-text">Никогда не повышаем голос на детей и относимся к любому с уважением</p>
+                            <p class="interesting-text">Ты можешь вносить предложения по улучшению , но надо предлагать конструктивные идеи</p>
                         </div>
                     </div>
                 </div>
@@ -139,6 +149,7 @@
 		<div class="container">
 			<div class="col-sm-12 d-flex justify-content-center">
 				<div class="title">
+                    <br>
 					<h2 class="title-main">Как попасть к нам в разработку</h2>
 					<p class="title-text">Оставьте свой адрес почты и мы с вами свяжемся</p>
 					<form action="" method="POST">
@@ -149,10 +160,30 @@
 			</div>
 		</div>
 	</section>           
-    
+	<!-- Подвал -->
+	<footer>
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="footer-info">
+						Kabirov Iskander
+						<br>
+						2025-2026
+						<br>
+						<a href="https://t.me/suyargulov" target="_blank"><svg class="icon" id="telegram" viewBox="0 0 496 512"></svg></a>
+						<a href="#" target="_blank"><svg class="icon" id="vk" viewBox="0 0 496 512"></svg></a>				
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>    
     
 <script src="libs/jquery.min.js"></script>
 <!-- Bootstrap5.3.js -->
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>  
+
+<!-- Собственные JS-скрипты -->
+ <script src="js/svg-paste.js"></script>
 </body>
 </html>
