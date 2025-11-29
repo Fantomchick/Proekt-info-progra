@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
-
+#связка файлов
 urlpatterns = [
     path('',include('proect_info_progra_app.urls')),
     path('admin/', admin.site.urls),

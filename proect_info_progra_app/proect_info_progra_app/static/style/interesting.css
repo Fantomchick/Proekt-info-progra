@@ -1,5 +1,5 @@
 #interesting {
-  background-color: #FFFFF0;
+  background-color: #000000;
   padding-top: 2%;
   padding-bottom: 5%;
   text-align: center;
@@ -7,14 +7,20 @@
 
 .interesting {
   margin: 4%;
+  color: #ffffff;
 }
 
-.title {
-  width: 55%;
+.title-main{
+    color: #ffffff;
 }
 
-.title-text {
+.interesting-title {
+  color: #ffffff;
+}
+
+.interesting-text {
   margin-bottom: 4%;
+  color: #ffffff;
 }
 
 .interesting-icon {
