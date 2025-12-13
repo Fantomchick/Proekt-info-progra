@@ -1,0 +1,31 @@
+.auth{
+    margin-left: 2rem;
+    margin-right: 2rem;
+    margin-top: 2rem;
+    width: 20rem;
+    align-items: center;
+
+}
+body{
+    background: #000000;
+	color: #000000;
+}
+#pole{
+    margin-left: 2rem;
+    margin-right: 2rem;
+    margin-top: 2rem;
+    width: 20rem;
+    align-items: center;
+    background-color: black;    
+}
+#nav-login{
+    background-color: black;
+}
+#obsh{
+    align-items: center;
+}
+p { color: #000000; }
+#password-label{
+    margin-top: 1rem;
+}
+
