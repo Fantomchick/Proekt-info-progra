@@ -30,9 +30,30 @@ body {
 }
 
 p {
-    color: #000000;
+    color: #ffffff;
 }
 
-#password-label {
-    margin-top: 1rem;
+#reg-link:hover{
+    text-decoration:underline
+}
+
+#reg-link:active{
+    color:coral
+}
+
+#reg-link{
+    color:rgb(255, 255, 255);
+    text-decoration:none;
+}
+
+@media screen and (max-width: 600px) {
+    header {
+        height: 15rem;
+    }
+    interesting-text{
+
+    }
+    interesting-title{
+        
+    }
 }
