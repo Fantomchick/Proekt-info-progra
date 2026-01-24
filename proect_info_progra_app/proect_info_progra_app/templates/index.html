@@ -42,7 +42,7 @@
                     </li>
                     <li class="nav-item">
                         {%if username%}
-                        <a class="nav-link" href={% url 'auth' %}>Общаться</a>
+                        <a class="nav-link" href={% url 'forum' %}>Общаться</a>
                         {%else%}
                         <a class="nav-link" href={% url 'auth' %}>Общаться</a>
                         {%endif%}
@@ -59,8 +59,7 @@
                         {%if username %}
                         <a class="nav-link dropdown-toggle bg-dark" href='' data-bs-toggle="dropdown">{{username}}</a>
                         <ul class="dropdown-menu bg-dark">
-                            {% csrf_token %}
-                            <li><a class="dropdown-item text-white " id='logout-link' href=''>Антисоздаться</a></li>
+                            <li><a class="dropdown-item text-white " id='logout-link' href={%url 'logout'%}>Антисоздаться</a></li>
                         </ul>
                         {%else%}
                         <a class="nav-link" href={% url 'reg' %} tabindex="-1" aria-disabled="true">Создаться</a>
@@ -68,7 +67,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Демо-версия</a>   #aria-disabled="true" - тег для инвалидов
+                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Демо-версия</a> 
                     </li>                    
                 </ul>
             </div>
@@ -206,6 +205,5 @@
 
     <!-- Собственные JS-скрипты -->
     <script src={%static 'js/svg-paste.js'%}></script>
-    <script src={%static 'js/logout.js'%}></script>
 </body>
 </html>

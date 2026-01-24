@@ -9,6 +9,8 @@ urlpatterns= [
     path('onas/',views.onas,name='onas'),
     path('history-web/',views.history_web,name='history-web'),
     path('interesting/',views.interesting,name='interesting'),
-    path('logout/',views.logout_view,name='logout')
+    path('logout/',views.logout_view,name='logout'),
+    path('forum/',views.forum,name='forum'),
+    path('topic/<int:id>/',views.topic_template,name='topic')
 ]
 
