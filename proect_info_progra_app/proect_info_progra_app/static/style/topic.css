@@ -1,0 +1,20 @@
+#topic {
+    margin-top: 2rem;
+    border-radius: 30px;
+    
+}
+#article{
+    background-color: rgb(255, 255, 255);
+}
+#topic-title {
+    font-size: 2rem;
+}
+
+#topic-image {
+    width: 350px;
+    height: 200px;
+}
+
+#topic-topic {
+    margin-bottom: 1rem;
+}
