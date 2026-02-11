@@ -1,9 +1,25 @@
 #topic {
-    margin-top: 2rem;
-    border-radius: 30px;
-    
+    margin-top: 1rem;    
+}
+
+#eyes{
+    height: 1rem;
+    width: 1rem;
+}
+#watch{
+    margin-left: 1rem;
+    height: 1rem;
+    width: 1rem;
+}
+#distance{
+    margin-top: 4px;
 }
 #article{
+    border-radius: 12px;
+    border-color: rgb(238, 238, 238);
+    border-style: solid;
+    padding: 5px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     background-color: rgb(255, 255, 255);
 }
 #topic-title {
@@ -14,7 +30,9 @@
     width: 350px;
     height: 200px;
 }
-
 #topic-topic {
     margin-bottom: 1rem;
+}
+#topic-image{
+    margin-top: 1rem;
 }

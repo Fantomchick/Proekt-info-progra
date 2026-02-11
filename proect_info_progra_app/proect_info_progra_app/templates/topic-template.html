@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href={% static 'style/topic.css' %}
     </head>
-<body class="bg-dark">
+<body>
     <nav class="navbar navbar-expand-xl navbar-dark bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="/">
@@ -55,18 +55,25 @@
     <main class="container" id="topic">
         <div class="row d-flex justify-content-center">
             <div class="col-8" id="article">
-                <p id="topic-title">{{ topic.topic_title }}</p>
-                {% for topic1 in topics%}
-                {{ topic1 }}
-                {% endfor %}
-                {% if topic.topic_image.url %}
-                <img src={{ topic.topic_image.url }} alt={{ topic.topic_title }} id="topic-image">
-                {% endif %}
+                <div>
+                    <div id="topic-title">{{ topic.topic_title }}</div>
+                    <p id="distance"><img src={%static 'img/eyes.png'%} id="eyes">{{topic.topic_views}}<img src={%static 'img/watch.png' %} id="watch">{{topic.topic_date}}</p>
+                </div>
+                <div id="topic_text">
+                    {% for topic1 in topics%}
+                    {{ topic1 }}
+                    {% endfor %}
+                </div>
+                <div class="row d-flex justify-content-center">
+                    {% if topic.topic_image.url %}
+                    <img src={{ topic.topic_image.url }} alt={{ topic.topic_title }} id="topic-image">
+                    {% endif %}
+                </div>
             </div>
         </div>     
     </main>
      
-        
+    <script src={% static 'js/topic.js' %}></script>   
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>    
 </body>
 </html>

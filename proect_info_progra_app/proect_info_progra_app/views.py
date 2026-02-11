@@ -96,7 +96,6 @@ def topic_template(request, id):
             topics[i] = '<p>' + topics[i] + '</p>'
         print(topics)
         print(topics[0])
-
         context= { 
             'username': request.user.username,
             'topic' : topic,
