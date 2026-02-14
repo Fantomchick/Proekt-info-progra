@@ -1,0 +1,26 @@
+body {
+    background-color: rgb(172, 147, 98);
+}
+.card{
+    border-radius: 12px;
+    border-color: rgb(230,218,166);
+    border-style: solid;
+    padding: 5px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    background-color: rgb(230,218,166);
+}
+#eyes{
+    height: 1rem;
+    margin-right: 4px;
+    width: 1rem;
+}
+
+#watch{
+    margin-left: 1rem;
+    margin-right: 4px;
+    height: 1rem;
+    width: 1rem;
+}
+.card{
+    margin: 2rem;
+}

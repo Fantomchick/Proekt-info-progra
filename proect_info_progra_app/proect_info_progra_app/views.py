@@ -72,7 +72,7 @@ def forum(request):
     try:
         topic = Topic.objects.all()
         context = {
-            'topic': topic,
+            'topic_list': topic,
             'username': request.user.username
         }
         return render(request,"forum.html",context)
