@@ -23,10 +23,11 @@ def auth(request):
         if user is not None: #Если пользователь есть
             print('yes')
             login(request, user )
-            JsonResponse({'status' : 'success'})  
+            return JsonResponse({'status':'success'}) 
         else:
             print('no')
-            JsonResponse({'status' : 'error'})    
+            login(request, user )
+            return JsonResponse({'status':'error'})  
     return render(request,"auth.html")
 def reg(request):
     if request.method == 'POST':
@@ -88,20 +89,29 @@ def topic_template(request, id):
         #         topic.topic_topic = topic.topic_topic[i]  + '<p>'
         
         # topic.topic_topic = '<p>' + topic.topic_topic + '</p>'
+        topics = ''
+        print(type(topics))
         topics = topic.topic_topic.split('\r\n')
         # print(topic.topic_topic[335])
         # print(ord(topic.topic_topic[335]))
 
         for i in range(0, len(topics), 2):
             topics[i] = '<p>' + topics[i] + '</p>'
-        print(topics)
-        print(topics[0])
+        topics1=''
+        for i in range(0, len(topics), 2):
+            topics1=topics1 + topics[i]         
+        # print(topics)
+        # print(topics[0])
+        # print(topics1)
+        topics = str(topics1)
+        print('test topics: ', topics)
+        print(type(topics))
         context= { 
             'username': request.user.username,
             'topic' : topic,
             'topics' : topics
         }     
-        return render(request,"topic-template.html",context)        
+        return render(request,"topic-template.html", context)        
     # except:
     #     return render(request,"topic-template.html")     
     

@@ -17,27 +17,19 @@ $('#auth-btn').click(
             data: userData,
 
             success: 
-                function(data) {
+                function (data) {
                     console.log('Success: ', data);
                     authButton.text('Успешно');
                     authButton.prop('disabled', true);
-                    authButton.css({
-                        'background-color': '#4CAF50',
-                        'color': '#fff',
-                    });
-                    window.location.href='/'; //переход на главную сайта
-                },
+                    window.location.href = '/forum/'; //переход на главную сайта
+                },//переход на главную сайта
             error:
-                function(data) {
+                function (data) {
+                    console.log('Error: ', data);
                     authButton.text("Нет такого пользователя");
-                    authButton.css({
-                        'background-color': '#ff0000',
-                        'color': '#fff'
-                    });
-                    window.location.href='/'; //переход на главную сайта
+                    authButton.prop('disabled', false);
+                    alert("ТЫ НЕ СУЩЕСТВУЕШЬ!")
                 },                
-        })
-
-        
+        })  
     }
 )
