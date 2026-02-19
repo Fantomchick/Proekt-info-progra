@@ -60,9 +60,10 @@
                     <p id="distance"><img src={%static 'img/eyes.png'%} id="eyes">{{topic.topic_views}}<img src={%static 'img/watch.png' %} id="watch">{{topic.topic_date}}</p>
                 </div>
                 <div id="topic_text">
-                    {% for topic1 in topics%}
+                    {% comment %} {% for topic1 in topics %}
                     {{ topic1 }}
-                    {% endfor %}
+                    {% endfor %} {% endcomment %}
+                    {{ topics }}
                 </div>
                 <div class="row d-flex justify-content-center">
                     {% if topic.topic_image.url %}
@@ -73,7 +74,8 @@
         </div>     
     </main>
      
-    <script src={% static 'js/topic.js' %}></script>   
+    <script src={% static 'js/topic.js' %}></script>
+    <script src={% static 'js/slice-text.js' %}></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>    
 </body>
 </html>

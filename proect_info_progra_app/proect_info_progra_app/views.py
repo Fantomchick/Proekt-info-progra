@@ -88,20 +88,25 @@ def topic_template(request, id):
         #         topic.topic_topic = topic.topic_topic[i]  + '<p>'
         
         # topic.topic_topic = '<p>' + topic.topic_topic + '</p>'
+        topics = ''
+        print(type(topics))
         topics = topic.topic_topic.split('\r\n')
         # print(topic.topic_topic[335])
         # print(ord(topic.topic_topic[335]))
 
         for i in range(0, len(topics), 2):
             topics[i] = '<p>' + topics[i] + '</p>'
-        print(topics)
-        print(topics[0])
+        # print(topics)
+        # print(topics[0])
+        topics = str(topics)
+        print('test topics: ', topics)
+        print(type(topics))
         context= { 
             'username': request.user.username,
             'topic' : topic,
             'topics' : topics
         }     
-        return render(request,"topic-template.html",context)        
+        return render(request,"topic-template.html", context)        
     # except:
     #     return render(request,"topic-template.html")     
     
