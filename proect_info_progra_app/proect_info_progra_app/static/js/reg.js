@@ -31,7 +31,7 @@ $('#reg-btn').click(
                         'background-color': '#4CAF50',
                         'color': '#fff',
                     });
-                    window.location.href='/'; //переход на главную сайта
+                    window.location.href='/forum/'; //переход на главную сайта
                 },
         });
 
