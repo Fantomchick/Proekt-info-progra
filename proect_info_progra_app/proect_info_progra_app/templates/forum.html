@@ -54,13 +54,13 @@
         {%for topic in topic_list%}
         <div class="row d-flex justify-content-center">
             <div class="card">
-                <div class="card-body">
+                <div class="card-body topic-card" onClick="window.location='/forum/topic/{{topic.id}}'">
                     <h5 class="card-title">{{topic.topic_title}}</h5>
                     <div class='row justify-content-start'>
                         <p id="distance"><img src={%static 'img/eyes.png'%} id="eyes">{{topic.topic_views}}<img src={%static 'img/watch.png' %} id="watch">{{topic.topic_date}}</p>
                     </div>
                     <p class="card-text">{{topic.topic_topic}}</p>
-                    <a href="/forum/topic/{{topic.id}}" class="btn btn-primary">Прочитать</a>
+                    {% comment %} <a href="/forum/topic/{{topic.id}}" class="btn btn-primary">Прочитать</a> {% endcomment %}
                 </div>
             </div>            
         </div>

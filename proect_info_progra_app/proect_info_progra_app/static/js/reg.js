@@ -33,6 +33,13 @@ $('#reg-btn').click(
                     });
                     window.location.href='/forum/'; //переход на главную сайта
                 },
+            error:
+                function (data) {
+                    console.log('Error: ', data);
+                    regButton.text("Нет такого пользователя");
+                    regButton.prop('disabled', false);
+                    alert("КТО-ТО ЗАБРАЛ ЭТОТ НИК И/ИЛИ ПОЧТУ!")
+                },   
         });
 
     }
