@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from transliterate import translit
+# from transliterate import translit
 
 class Topic(models.Model):
     #CharField(max_length = 25)
