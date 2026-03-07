@@ -36,7 +36,7 @@
                         <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
                             <!-- <li><a class="dropdown-item text-white" href={% url 'interesting' %}>Интересное</a></li> -->
                             <li><a class="dropdown-item text-white" href={% url 'history-web' %}>История создания сайта и его идея</a></li>
-                            <li><a class="dropdown-item text-white" href={% url 'onas' %}>О разработчиках</a></li>
+                            <li><a class="dropdown-item text-white" href={% url 'onas' %}>О Разроботчиках</a></li>
                         </ul>
                     </li>
 
@@ -81,6 +81,7 @@
                     {%if username %}
                     <a class="nav-link dropdown-toggle bg-dark" href='' data-bs-toggle="dropdown">{{username}}</a>
                     <ul class="dropdown-menu bg-dark">
+                        <li><a class="dropdown-item text-white " id='logout-link' href={%url 'account'%}>В аккаунт</a></li>
                         <li><a class="dropdown-item text-white " id='logout-link' href={%url 'logout'%}>Антисоздаться</a></li>
                     </ul>
                     {%else%}

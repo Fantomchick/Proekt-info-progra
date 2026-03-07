@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Аккаунт – Продукты 24{% endblock %}
+
+{% block css %}
+    <!-- Связывание с CSS файлом -->
+    <link rel="stylesheet" href={% static 'style/account.css' %}>
+{% endblock %}
+
+{% block content %}
+    {% csrf_token %}
+    <main class="container account" id="auth">
+        <div class="container text-white">
+            <h1>Настройки профиля</h1>
+            <!-- Имя -->
+            <label for="first-name" class="form-label">Имя</label>
+            <input type="text" class="form-control" id="first-name" placeholder="Введите имя" value="{{ first_name }}">
+            <!-- Почта -->
+            <label for="email" class="form-label reg-label">Электронная почта</label>
+            <input type="email" class="form-control" id="email" placeholder="Введите почту" value="{{ email }}">
+            <!-- Пароль -->
+            <label for="password" class="form-label reg-label">Пароль</label>
+            <input type="password" class="form-control" id="password" placeholder="Введите пароль" value="{{ password }}">
+            <!-- Кнопка регистрации -->
+            <input type="button" class="btn btn-dark" id="save-button" value="Сохранить">
+        </div>
+    </main>   
+{% endblock %}
+
+{% block js %}
+    <script type="text/javascript" src={% static 'js/account.js' %}></script>
+{% endblock %}
