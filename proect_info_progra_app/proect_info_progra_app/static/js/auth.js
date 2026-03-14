@@ -28,7 +28,7 @@ $('#auth-btn').click(
                     console.log('Error: ', data);
                     authButton.text("Нет такого пользователя");
                     authButton.prop('disabled', false);
-                    alert("ТЫ НЕ СУЩЕСТВУЕШЬ!")
+                    alert("ты не существуешь!")
                 },                
         })  
     }

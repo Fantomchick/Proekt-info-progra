@@ -14,10 +14,26 @@ def index(request):
     except AttributeError as e:
         return render(request,"index.html")
 
+def account(request):
+    flag=1
+    context={
+        'flag_auth':flag,
+        'flag_reg': flag,
+    }    
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        nickname = request.POST.get('nickname')
+        username = nickname       
+        print("Ник: ",username,'\n',"Пароль: ",password,"Почта",email,'\n',"Код",cod_email,'\n',"Пароль проверка",password_proverka,sep='')
+        return JsonResponse({'status':'success'})
+    return render(request, 'account.html',context)
+
 def auth(request):
     flag=1
     context={
-        'flag_auth':flag
+        'flag_auth':flag,
+        
     }
     if request.method == 'POST':
         username = request.POST.get('nickname')
