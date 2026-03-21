@@ -29,3 +29,10 @@
   fill: black;
   margin: 6%;
 }
+
+footer {
+  background-color: black;
+  /*  position: sticky;*/
+  /*  bottom: 0;*/
+  width: 100%;
+}

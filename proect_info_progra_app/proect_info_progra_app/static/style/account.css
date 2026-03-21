@@ -1,3 +1,6 @@
+.account {
+    margin-top: 2.5rem;
+}
 .auth{
     margin-left: 2rem;
     margin-right: 2rem;
@@ -10,18 +13,13 @@ body{
     background: #000000;
 	color: #000000;
 }
-.card {
+#auth {
     border-radius: 12px;
     /* border-color: rgb(241, 239, 230); */
     border-style: solid;
     padding: 5px;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     background-color: rgb(34, 40, 49);
-}
-
-#auth {
-    background: #000000;
-    color: #000000;
 }
 #pole{
     margin-left: 2rem;
@@ -42,15 +40,15 @@ p { color: #ffffff; }
     margin-top: 1rem;
 }
 
-#reg-link:hover{
+#save-button:hover{
     text-decoration:underline
 }
 
-#reg-link:active{
+#save-button:active{
     color:coral
 }
 
-#reg-link{
+#save-button{
     color:rgb(255, 255, 255);
     text-decoration:none;
 }
@@ -65,4 +63,11 @@ p { color: #ffffff; }
     interesting-title{
         
     }
+}
+label {
+    margin-top: 0.5rem;
+}
+
+h1 {
+    text-align: center;
 }

@@ -1,0 +1,164 @@
+{% load static %}
+<nav class="navbar navbar-expand-xl navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <img src={%static 'img/generated-image-top.jpeg' %} width="30" height="30" class="d-inline-block align-top"alt="not found" loading="lazy"></img>
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarWithDropdown"
+            aria-controls="navbarWithDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarWithDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href=''></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href={% url 'index' %}>Главная</a>
+                </li>
+                {% comment %} {%if flag_auth %}
+
+                {%else%}
+                    <li class="nav-item">
+                        {% if username %}
+                        <a class="nav-link" href={% url 'forum' %}>Общаться</a>
+                        {% else %}
+                        <a class="nav-link" href={% url 'auth' %}>Общаться</a>
+                        {% endif %}
+                    </li>
+                {%endif%} {% endcomment %}
+
+                {%if flag_interesting%}
+                    <li class="nav-item dropdown bg-dark">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">Самое интересное</a>
+                        <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
+                            <!-- <li><a class="dropdown-item text-white" href={% url 'interesting' %}>Интересное</a></li> -->
+                            <li><a class="dropdown-item text-white" href={% url 'history-web' %}>История создания сайта и его идея</a></li>
+                            <li><a class="dropdown-item text-white" href={% url 'onas' %}>О Разроботчиках</a></li>
+                        </ul>
+                    </li>
+
+                {%elif flag_history_web%}
+                <li class="nav-item dropdown bg-dark">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">История создания сайта и его идея</a>
+                    <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a class="dropdown-item text-white" href={% url 'interesting' %}>Самое интересное</a></li>
+                        <!-- <li><a class="dropdown-item text-white" href={% url 'history-web' %}>История создания и идея
+                            сайта</a></li> -->
+                        <li><a class="dropdown-item text-white" href={% url 'onas' %}>О разработчиках</a></li>
+                    </ul>
+                </li>
+
+                {%elif flag_onas%}
+                <li class="nav-item dropdown bg-dark">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">О разработчиках</a>
+                    <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a class="dropdown-item text-white" href={% url 'interesting' %}>Самое интересное</a></li>
+                        <li><a class="dropdown-item text-white" href={% url 'history-web' %}>История создания сайта и его идея</a></li>
+                        <!-- <li><a class="dropdown-item text-white" href={% url 'onas' %}>О разработчиках</a></li> -->
+                    </ul>
+                </li>
+                {%else%}
+                <li class="nav-item dropdown bg-dark">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">Интересное</a>
+                    <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a class="dropdown-item text-white" href={% url 'interesting' %}>Самое интересное</a></li>
+                        <li><a class="dropdown-item text-white" href={% url 'history-web' %}>История создания сайта и его идея</a></li>
+                        <li><a class="dropdown-item text-white" href={% url 'onas' %}>О разработчиках</a></li>
+                    </ul>
+                </li>
+                {%endif%}
+                {%if username %}
+                <a class="nav-link" href={% url 'forum' %}>Общаться</a>
+                <a class="nav-link dropdown-toggle bg-dark" href='' data-bs-toggle="dropdown">{{username}}</a>
+                <ul class="dropdown-menu bg-dark">
+                    <li><a class="dropdown-item text-white " id='logout-link' href={%url 'account'%}>В аккаунт</a></li>
+                    <li><a class="dropdown-item text-white " id='logout-link' href={%url 'logout'%}>Антисоздаться</a></li>
+                </ul>
+                {%else%}
+                <button type="button" class="btn btn-dark text-secondary " data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Общаться</button>
+                <button type="button" class="btn btn-dark text-secondary " data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Создаться</button>
+                {% comment %} <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@fat">Open modal for @fat</button>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Open modal for @getbootstrap</button> {% endcomment %}
+                
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+
+                    <div class="modal-content">
+
+                        <div class="container text-white " id="auth">
+                            <div class="row justify-content-center">
+                                <div class="col-sm-6">
+                                    <main class="row justify-content-center">
+                                        <h2 class="row justify-content-center" id='obsh'>ОБЩАТЬСЯ</h2>
+                                        <div class="card text-white">
+                                            <label for='nickname' class='form-label' id='nickname-label'>Введите свой ник <a id='reg-link' href="{%url 'account'%}">или нажмите сюда, если забыли его</a></label>
+                                            <input type="text" class='form-control ' id='nickname' value='Fantom'>
+                                            <label for='password' class='form-label' id='password-label'>Введите свой пароль <a id='reg-link' href="{%url 'account'%}">или нажмите сюда, если забыли его</a></label>
+                                            <input type="password" class='form-control ' id='password' value='111fefefefef'>
+                                            <input type="button" class='btn btn-dark' id='auth-btn' value='Общаться'>
+                                            <p>Ещё не создались ? Тогда-<a id='reg-link' href="{%url 'reg'%}">создаться</a></p>
+                                        </div>
+                                    </main>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>           
+                <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+
+                        <div class="container text-white" id="reg">
+                            <div class="row justify-content-center">
+                                <div class="col-sm-6">
+                                    <main class="row justify-content-center">
+                                        <h2 class="row justify-content-center" id='obsh'>Создаться</h2>
+                                        <div class="card text-white">
+                                            <label for='nickname' class='form-label' id='email-label'>Введите почту</label>
+                                            <input type="email" class='form-control ' id='email' value='Fantom@yandex.ru'>
+                                            <label for='nickname' class='form-label' id='cod-email-label'>Введите код с полученого сообщения</label>
+                                            <input type="text" class='form-control ' id='cod-email' value='Fantom'>
+                                            <label for='nickname' class='form-label' id='nickname-label'>Придумайте ник</label>
+                                            <input type="text" class='form-control ' id='nickname' value='Fantom'>
+                                            <label for='password' class='form-label' id='password-label'>Придумайте пароль</label>
+                                            <input type="password" class='form-control ' id='password' value='111fefefefef'>
+                                            <label for='password' class='form-label' id='password-proverka-label'>Повторите пароль</label>
+                                            <input type="password" class='form-control ' id='password-proverka' value='111fefefefef'>
+                                            <input type="button" class='btn btn-dark' id='reg-btn' value='Создаться'>
+                                            <p>Уже созданы? Тогда-<a id='reg-link' href="{%url 'auth'%}">общаться</a></p>
+                                        </div>
+                                    </main>
+                                </div>
+                            </div>
+                        </div>                  
+                </div>  
+                {%endif%}   
+                {% comment %} {%if flag_reg%}
+
+                {%else%}
+                <li class="nav-item dropdown">
+                    {%if username %}
+                    <a class="nav-link dropdown-toggle bg-dark" href='' data-bs-toggle="dropdown">{{username}}</a>
+                    <ul class="dropdown-menu bg-dark">
+                        <li><a class="dropdown-item text-white " id='logout-link' href={%url 'account'%}>В аккаунт</a></li>
+                        <li><a class="dropdown-item text-white " id='logout-link' href={%url 'logout'%}>Антисоздаться</a></li>
+                    </ul>
+                    {%else%}
+                    <a class="nav-link" href={% url 'reg' %} tabindex="-1" aria-disabled="true">Создаться</a>
+                    {%endif%}
+                </li>
+                {%endif%} {% endcomment %}
+
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Демо-версия</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
