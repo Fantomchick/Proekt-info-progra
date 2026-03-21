@@ -109,7 +109,7 @@ def logout_view(request):
 
 def forum(request):
     try:
-        topic = Topic.objects.all()
+        topic = Topic.objects.filter(themes_type='Лчн')
         flag=1
         context = {
             'flag_auth': flag,
