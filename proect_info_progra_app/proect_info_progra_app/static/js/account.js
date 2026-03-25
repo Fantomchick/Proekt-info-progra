@@ -1,10 +1,10 @@
 $('#save-button').click(
     function() {
         //Подбираем данные с HTML
-        let email = $('#email').val();
-        let password = $('#password').val();
-        let nickname = $('#nickname').val();
-        let codEmail=$('#cod-email').val()
+        let email = $('#email_account"').val();
+        let password = $('#password_account"').val();
+        let nickname = $('#nickname_account"').val();
+        let codEmail = $('#cod-email_account"').val()
         let regButton = $('#save-button');
 
         const CSRF = $('[name=csrfmiddlewaretoken]').val();

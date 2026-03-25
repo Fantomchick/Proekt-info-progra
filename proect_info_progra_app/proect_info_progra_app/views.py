@@ -15,11 +15,7 @@ def index(request):
         return render(request,"index.html")
 
 def account(request):
-    flag=1
-    context={
-        'flag_auth':flag,
-        'flag_reg': flag,
-    }    
+    print('Yes')
     if request.method == 'POST':
         email = request.POST.get('email')
         password = request.POST.get('password')
@@ -27,17 +23,13 @@ def account(request):
         username = nickname       
         print("Ник: ",username,'\n',"Пароль: ",password,"Почта",email,'\n',"Код",cod_email,'\n',"Пароль проверка",password_proverka,sep='')
         return JsonResponse({'status':'success'})
-    return render(request, 'account.html',context)
-
+    return render(request)
+@csrf_exempt
 def auth(request):
-    flag=1
-    context={
-        'flag_auth':flag,
-        
-    }
+    print('Yes')
     if request.method == 'POST':
-        username = request.POST.get('nickname')
-        password = request.POST.get('password')
+        username = request.POST.get('nickname_auth')
+        password = request.POST.get('password_auth')
         #\n-это перенос строки
         print("Ник: ",username,'\n',"Пароль: ",password,sep='')
         # Авторизация здесь ищется зарегистрированого пользователя
@@ -50,12 +42,10 @@ def auth(request):
             print('no')
             login(request, user )
             return JsonResponse({'status':'error'})  
-    return render(request,"auth.html",context)
+    return render(request)
+@csrf_exempt
 def reg(request):
-    flag=1
-    context = {
-        'flag_reg': flag,
-    }    
+    print('Yes')   
     if request.method == 'POST':
         username = request.POST.get('nickname')
         password = request.POST.get('password')
@@ -68,7 +58,7 @@ def reg(request):
         print("Ник: ",username,'\n',"Пароль: ",password,"Почта",email,'\n',"Код",cod_email,'\n',"Пароль проверка",password_proverka,sep='')
         return JsonResponse({'status':'success'})
 
-    return render(request,"reg.html",context)
+    return render(request)
 
 def onas(request):
     flag=1

@@ -1,13 +1,13 @@
 $('#auth-btn').click(
     function() {
-        let nickname=$('#nickname').val()
-        let password=$('#password').val()
+        let nickname_auth = $('#nickname_auth').val()
+        let password_auth = $('#password_auth').val()
         let authButton=$('#auth-btn')
         const CSRF= $('[name=csrfmiddlewaretoken]').val()
 
         let userData = {
-            'nickname': nickname,
-            'password': password,
+            'nickname_auth': nickname_auth,
+            'password_auth': password_auth,
             'csrfmiddlewaretoken': CSRF
         }
         $.ajax({
@@ -15,7 +15,6 @@ $('#auth-btn').click(
             type: 'POST',
             dataType: 'json',
             data: userData,
-
             success: 
                 function (data) {
                     console.log('Success: ', data);

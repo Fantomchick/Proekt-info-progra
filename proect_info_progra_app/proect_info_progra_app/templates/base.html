@@ -17,6 +17,7 @@
     <link rel="stylesheet" href={%static 'style/footer.css' %}>
     <link rel="stylesheet" href={%static 'style/auth.css' %}></link>
     <link rel="stylesheet" href={%static 'style/reg.css' %}></link>
+    <link rel="stylesheet" href={% static 'style/account.css' %}>
 
     {% block css %}{% endblock %}
     <!-- <link rel="stylesheet" href={% static 'css/footer.css' %}> -->
@@ -38,7 +39,6 @@
         crossorigin="anonymous"></script>
     <script type="text/javascript" src={% static 'js/auth.js' %}></script>
     <script type="text/javascript" src={% static 'js/reg.js' %}></script>
-    <script type="text/javascript" src={% static 'js/nav.js' %}></script>    
     {% block js %}
     {% endblock %}
 </body>

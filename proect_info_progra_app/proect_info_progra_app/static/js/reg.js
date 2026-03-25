@@ -17,11 +17,10 @@ $('#reg-btn').click(
             'csrfmiddlewaretoken': CSRF
         }
         $.ajax({
-            url: '/reg/',
+            url: 'reg/',
             type: 'POST',
             dataType: 'json',
             data: userData,
-
             success: 
                 function(data) {
                     console.log('Success: ', data);
