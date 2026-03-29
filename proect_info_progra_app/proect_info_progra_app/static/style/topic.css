@@ -3,31 +3,40 @@
 }
 
 body {
-    background-color: rgb(172, 147, 98);
+    background-color: #0F172A
 }
-
+#topic_text{
+    color: #F1F5F9;
+}
 #eyes{
+    color: #F1F5F9;
     height: 1rem;
+    margin-right: 4px;
     width: 1rem;
 }
+
 #watch{
+    color: #F1F5F9;
     margin-left: 1rem;
+    margin-right: 4px;
     height: 1rem;
     width: 1rem;
 }
 #distance{
+    color: #F1F5F9;
     margin-top: 4px;
 }
 #article{
     border-radius: 12px;
-    border-color: rgb(128, 128, 128);
+    /* border-color: rgb(241, 239, 230); */
     border-style: solid;
     padding: 5px;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    background-color: rgb(230,218,166);
+    background-color: #1E293B;
 }
 #topic-title {
     font-size: 2rem;
+    color: #F1F5F9;
 }
 
 #topic-image {

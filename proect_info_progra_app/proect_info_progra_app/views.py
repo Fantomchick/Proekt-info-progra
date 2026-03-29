@@ -7,15 +7,29 @@ from django.views.decorators.csrf import csrf_exempt
 #рендеринг индекса
 def index(request):
     try:
-        context = {'username': request.user.username}
+        context = {
+            'username': request.user.username,
+            }
         return render(request,"index.html",context)
     except AttributeError as e:
         return render(request,"index.html")
 
-def auth(request):
+def account(request):
+    print('Yes')
     if request.method == 'POST':
-        username = request.POST.get('nickname')
+        email = request.POST.get('email')
         password = request.POST.get('password')
+        nickname = request.POST.get('nickname')
+        username = nickname       
+        print("Ник: ",username,'\n',"Пароль: ",password,"Почта",email,'\n',"Код",cod_email,'\n',"Пароль проверка",password_proverka,sep='')
+        return JsonResponse({'status':'success'})
+    return render(request)
+@csrf_exempt
+def auth(request):
+    print('Yes')
+    if request.method == 'POST':
+        username = request.POST.get('nickname_auth')
+        password = request.POST.get('password_auth')
         #\n-это перенос строки
         print("Ник: ",username,'\n',"Пароль: ",password,sep='')
         # Авторизация здесь ищется зарегистрированого пользователя
@@ -23,12 +37,15 @@ def auth(request):
         if user is not None: #Если пользователь есть
             print('yes')
             login(request, user )
-            JsonResponse({'status' : 'success'})  
+            return JsonResponse({'status':'success'}) 
         else:
             print('no')
-            JsonResponse({'status' : 'error'})    
-    return render(request,"auth.html")
+            login(request, user )
+            return JsonResponse({'status':'error'})  
+    return render(request)
+@csrf_exempt
 def reg(request):
+    print('Yes')   
     if request.method == 'POST':
         username = request.POST.get('nickname')
         password = request.POST.get('password')
@@ -41,28 +58,40 @@ def reg(request):
         print("Ник: ",username,'\n',"Пароль: ",password,"Почта",email,'\n',"Код",cod_email,'\n',"Пароль проверка",password_proverka,sep='')
         return JsonResponse({'status':'success'})
 
-    return render(request,"reg.html")
+    return render(request)
 
 def onas(request):
+    flag=1
+    context={
+        'flag_onas':flag,
+    }
     try:
-        context = {'username': request.user.username}
+        context = {'flag_onas':flag,'username': request.user.username}
         return render(request,"onas.html",context)
     except AttributeError as e:
-        return render(request,"onas.html")    
+        return render(request,"onas.html",context)    
 
 def history_web(request):
+    flag=1
+    context={
+        'flag_history_web':flag,
+    }    
     try:
-        context = {'username': request.user.username}
+        context = {'flag_history_web':flag,'username': request.user.username}
         return render(request,"history-web.html",context)
     except AttributeError as e:
-        return render(request,"history-web.html")    
+        return render(request,"history-web.html",context)    
 
 def interesting(request):
+    flag=1
+    context={
+        'flag_interesting':flag,
+    }    
     try:
-        context = {'username': request.user.username}
+        context = {'flag_interesting':flag,'username': request.user.username}
         return render(request,"interesting.html",context)
     except AttributeError as e:
-        return render(request,"interesting.html")    
+        return render(request,"interesting.html",context)    
 
 def logout_view(request):
     logout(request)
@@ -70,8 +99,10 @@ def logout_view(request):
 
 def forum(request):
     try:
-        topic = Topic.objects.all()
+        topic = Topic.objects.filter(themes_type='Лчн')
+        flag=1
         context = {
+            'flag_auth': flag,
             'topic_list': topic,
             'username': request.user.username
         }
@@ -79,29 +110,34 @@ def forum(request):
     except AttributeError as e:
         return render(request,"forum.html") 
 def topic_template(request, id):
-    # try:
         topic = Topic.objects.get(id = id)
-        
-        # for i in range(0, len(topic.topic_topic) ):
-        #     if ord(topic.topic_topic[i]) == 13:
-        #         topic.topic_topic = topic.topic_topic[i] + '</p>'
-        #         topic.topic_topic = topic.topic_topic[i]  + '<p>'
-        
-        # topic.topic_topic = '<p>' + topic.topic_topic + '</p>'
-        topics = topic.topic_topic.split('\r\n')
-        # print(topic.topic_topic[335])
-        # print(ord(topic.topic_topic[335]))
+        flag=1
+        # Код для абзацев
 
-        for i in range(0, len(topics), 2):
-            topics[i] = '<p>' + topics[i] + '</p>'
-        print(topics)
-        print(topics[0])
-        context= { 
+        # topics = ''
+        # print(type(topics))
+        # topics = topic.topic_topic.split('\r\n')
+        # # print(topic.topic_topic[335])
+        # # print(ord(topic.topic_topic[335]))
+
+        # for i in range(0, len(topics), 2):
+        #     topics[i] = '<p>' + topics[i] + '</p>'
+        # topics1=''
+        # for i in range(0, len(topics), 2):
+        #     topics1=topics1 + topics[i]         
+        # # print(topics)
+        # # print(topics[0])
+        # # print(topics1)
+        # topics = str(topics1)
+        # print('test topics: ', topics)
+        # print(type(topics))
+
+        context= {
+            'flag_auth': flag, 
             'username': request.user.username,
             'topic' : topic,
-            'topics' : topics
         }     
-        return render(request,"topic-template.html",context)        
+        return render(request,"topic-template.html", context)        
     # except:
     #     return render(request,"topic-template.html")     
     
