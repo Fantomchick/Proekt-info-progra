@@ -20,7 +20,7 @@ $('#auth-btn').click(
                     console.log('Success: ', data);
                     authButton.text('Успешно');
                     authButton.prop('disabled', true);
-                    window.location.href = '/forum/'; //переход 
+                    window.location.href = '/forum/all'; //переход 
                 },
             error:
                 function (data) {

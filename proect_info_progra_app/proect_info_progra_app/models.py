@@ -9,7 +9,7 @@ class Topic(models.Model):
     #DateTimeField()
     #FilePathField()-путь до файла
     cortez_type=(('Типа ключ нужный для джанго','Любое значение '),('бн','бан'),('врбн','временый бан'))
-    themes_type=(('Плтк',"Политика"),('Лчн',"Личное"),('Жвт',"Животные"),('Игр',"Игры"))
+    themes_types=(('politics',"Политика"),('personal',"Личное"),('animals',"Животные"),('game',"Игры"))
     # def user_directory_path(instanse,filename):
     #     title = str(translit(value = instanse.title,launguage_code='ru',reversed=True))
     #     id=str(instance.id)
@@ -22,7 +22,7 @@ class Topic(models.Model):
     # topic_image2=models.ImageField(default='none',upload_to=user_directory_path)
     topic_date=models.DateTimeField()#Время появления темы
     # topic_author=User.username #Автор
-    themes_type=models.CharField(max_length = 100,choices = themes_type)
+    themes_type=models.CharField(max_length = 100,choices = themes_types)
 
     def __str__(self):
         return f'{self.topic_title}'

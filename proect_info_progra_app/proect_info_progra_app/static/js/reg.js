@@ -30,7 +30,7 @@ $('#reg-btn').click(
                         'background-color': '#4CAF50',
                         'color': '#fff',
                     });
-                    window.location.href='/forum/'; //переход
+                    window.location.href='/forum/all'; //переход
                 },
             error:
                 function (data) {

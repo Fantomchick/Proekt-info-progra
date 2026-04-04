@@ -97,13 +97,24 @@ def logout_view(request):
     logout(request)
     return redirect('index')
 
-def forum(request):
+def forum(request, themes_type):
     try:
-        topic = Topic.objects.filter(themes_type='Лчн')
-        flag=1
+        type_name = ''
+        if themes_type == "all":
+            topic = Topic.objects.all()
+        else:    
+            topic = Topic.objects.filter(themes_type = themes_type)
+            topic_type = Topic.themes_types
+            print(topic_type)
+            for tp in topic_type:
+                if tp[0] == themes_type:
+                    type_name = str(tp[1])
+                    break
+        flag = 1
         context = {
             'flag_auth': flag,
             'topic_list': topic,
+            'type_name' : type_name,
             'username': request.user.username
         }
         return render(request,"forum.html",context)

@@ -13,7 +13,7 @@ urlpatterns= [
     path('history-web/',views.history_web,name='history-web'),
     path('interesting/',views.interesting,name='interesting'),
     path('logout/',views.logout_view,name='logout'),
-    path('forum/',views.forum,name='forum'),
+    path('forum/<str:themes_type>',views.forum,name='forum'),
     path('forum/topic/<int:id>/',views.topic_template,name='topic-template'),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -9,10 +9,6 @@
     align-items: center;
 
 }
-body{
-    background: #000000;
-	color: #000000;
-}
 #auth {
     border-radius: 12px;
     /* border-color: rgb(241, 239, 230); */
