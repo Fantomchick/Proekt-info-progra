@@ -1,9 +1,11 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
-from django.http import JsonResponse
+from django.http import JsonResponse,HttpResponse
 from .models import Topic
 from django.views.decorators.csrf import csrf_exempt
+
+from django.core.mail import send_mail
 #рендеринг индекса
 def index(request):
     try:
@@ -16,14 +18,17 @@ def index(request):
 
 def account(request):
     print('Yes')
-    if request.method == 'POST':
-        email = request.POST.get('email')
-        password = request.POST.get('password')
-        nickname = request.POST.get('nickname')
-        username = nickname       
-        print("Ник: ",username,'\n',"Пароль: ",password,"Почта",email,'\n',"Код",cod_email,'\n',"Пароль проверка",password_proverka,sep='')
-        return JsonResponse({'status':'success'})
-    return render(request)
+    try:
+        if request.method == 'POST':
+            email = request.POST.get('email')
+            password = request.POST.get('password')
+            nickname = request.POST.get('nickname')
+            username = nickname       
+            print("Ник: ",username,'\n',"Пароль: ",password,"Почта",email,'\n',"Код",cod_email,'\n',"Пароль проверка",password_proverka,sep='')
+            return JsonResponse({'status':'success'})
+        return render(request,'account.html')
+    except AttributeError:
+        return HttpResponse("<h1>401 Unauthorized</h1>",status=401)
 @csrf_exempt
 def auth(request):
     print('Yes')
@@ -32,7 +37,7 @@ def auth(request):
         password = request.POST.get('password_auth')
         #\n-это перенос строки
         print("Ник: ",username,'\n',"Пароль: ",password,sep='')
-        # Авторизация здесь ищется зарегистрированого пользователя
+        #Авторизация здесь ищется зарегистрированого пользователя
         user=authenticate(request,username=username,password=password)
         if user is not None: #Если пользователь есть
             print('yes')

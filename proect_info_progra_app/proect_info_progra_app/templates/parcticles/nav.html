@@ -17,18 +17,6 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href={% url 'index' %}>Главная</a>
                 </li>
-                {% comment %} {%if flag_auth %}
-
-                {%else%}
-                    <li class="nav-item">
-                        {% if username %}
-                        <a class="nav-link" href={% url 'forum' %}>Общаться</a>
-                        {% else %}
-                        <a class="nav-link" href={% url 'auth' %}>Общаться</a>
-                        {% endif %}
-                    </li>
-                {%endif%} {% endcomment %}
-
                 {%if flag_interesting%}
                     <li class="nav-item dropdown bg-dark">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown"
@@ -110,30 +98,14 @@
                     {%endif%}
                 {%else%}
                 <li class="nav-item">
-                    <button type="button" class="btn btn-dark text-secondary " data-bs-toggle="modal" data-bs-target="#exampleModal"
+                    <button type="button" class="btn btn-dark text-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal"
                         data-bs-whatever="@mdo">Общаться</button>
                 </li>
                 <li class="nav-item">
-                    <button type="button" class="btn btn-dark text-secondary " data-bs-toggle="modal" data-bs-target="#exampleModal1"
+                    <button type="button" class="btn btn-dark text-secondary"  data-bs-toggle="modal" data-bs-target="#exampleModal1"
                         data-bs-whatever="@mdo">Создаться</button>
                 </li>
                 {%endif%}   
-                {% comment %} {%if flag_reg%}
-
-                {%else%}
-                <li class="nav-item dropdown">
-                    {%if username %}
-                    <li class="nav-item dropdown">
-                        <ul class="dropdown-menu bg-dark">
-                            <li><a class="dropdown-item text-white " id='logout-link' href={%url 'account' %}>В аккаунт</a></li>
-                            <li><a class="dropdown-item text-white " id='logout-link' href={%url 'logout' %}>Антисоздаться</a></li>
-                        </ul>
-                    </li>
-                    {%else%}
-                    <a class="nav-link" href={% url 'reg' %} tabindex="-1" aria-disabled="true">Создаться</a>
-                    {%endif%}
-                </li>
-                {%endif%} {% endcomment %}
                 <li class="nav-item">
                     <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Демо-версия</a>
                 </li>

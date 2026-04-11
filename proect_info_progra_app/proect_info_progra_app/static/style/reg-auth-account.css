@@ -1,0 +1,95 @@
+.card {
+    border-radius: 25px;
+    border-style: solid;
+    padding: 5px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    background-color: rgb(34, 40, 49);
+
+}
+.modal-content{
+    border-radius: 25px;
+    margin-top: 5rem;
+    background-color:rgb(34, 40, 49); ;
+}
+.btn-top{
+    margin-top: 0.5rem;
+}
+#nav-login {
+    background-color: black;
+}
+
+#obsh {
+    align-items: center;
+}
+
+p {
+    color: #ffffff;
+}
+
+#reg-link:hover{
+    text-decoration:underline
+}
+
+#reg-link:active{
+    color:coral
+}
+
+#reg-link{
+    color:rgb(255, 255, 255);
+    text-decoration:none;
+}
+
+.account {
+    margin-top: 2.5rem;
+}
+#nav-login{
+    background-color: black;
+}
+#obsh{
+    align-items: center;
+}
+p { color: #ffffff; }
+
+#password-label{
+    margin-top: 1rem;
+}
+
+#save-button:hover{
+    text-decoration:underline
+}
+
+#save-button:active{
+    color:coral
+}
+
+#save-button{
+    color:rgb(255, 255, 255);
+    text-decoration:none;
+}
+
+@media screen and (max-width: 600px) {
+    header {
+        height: 15rem;
+    }
+
+}
+label {
+    margin-top: 0.5rem;
+}
+
+h1 {
+    text-align: center;
+}
+
+.email-input{
+    display: flex;
+    align-items: stretch;
+    width: 100%;
+    margin-top: 5px;
+}
+.email-input .form-control{
+    flex: 1;
+    border-top-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+

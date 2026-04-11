@@ -15,8 +15,7 @@
         integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href={%static 'style/footer.css' %}>
-    <link rel="stylesheet" href={%static 'style/auth.css' %}></link>
-    <link rel="stylesheet" href={%static 'style/reg.css' %}></link>
+    <link rel="stylesheet" href={%static 'style/reg-auth-account.css' %}></link>
     <link rel="stylesheet" href={% static 'style/account.css' %}>
 
     {% block css %}{% endblock %}
@@ -40,7 +39,7 @@
                     <input type="text" class='form-control ' id='nickname_auth' value='Fantom'>
                     <label for='password' class='form-label' id='password-label'>Введите свой пароль <a id='reg-link' href="{%url 'account'%}">или нажмите сюда, если забыли его</a></label>
                     <input type="password" class='form-control ' id='password_auth' value='111fefefefef'>
-                    <input type="button" class='btn btn-dark' id='auth-btn' value='Общаться'>
+                    <input type="button" class='btn-top btn btn-dark' id='auth-btn' value='Общаться'>
                     <!-- <p>Ещё не создались ? Тогда-<a id='reg-link' href="{%url 'reg'%}">создаться</a></p> -->
                 </div>
             </div>
@@ -52,7 +51,10 @@
                 <div class="card text-white">
                     <h2 class="row justify-content-center" id='obsh'>СОЗДАТЬСЯ</h2>
                     <label for='nickname' class='form-label' id='email-label'>Введите почту</label>
-                    <input type="email" class='form-control ' id='email' value='Fantom@yandex.ru'>
+                    <div class='input-email'>
+                        <input type="email" class='form-control ' id='email' value='Fantom@yandex.ru'>
+                        <input type="button" class='btn btn-dark' id='email-btn' value='Отправить код на почту'>
+                    </div>
                     <label for='nickname' class='form-label' id='cod-email-label'>Введите код с полученого сообщения</label>
                     <input type="text" class='form-control ' id='cod-email' value='Fantom'>
                     <label for='nickname' class='form-label' id='nickname-label'>Придумайте ник</label>
@@ -61,7 +63,7 @@
                     <input type="password" class='form-control ' id='password' value='111fefefefef'>
                     <label for='password' class='form-label' id='password-proverka-label'>Повторите пароль</label>
                     <input type="password" class='form-control ' id='password-proverka' value='111fefefefef'>
-                    <input type="button" class='btn btn-dark' id='reg-btn' value='Создаться'>
+                    <input type="button" class='btn-top btn btn-dark' id='reg-btn' value='Создаться'>
                     <!-- <p>Уже созданы? Тогда-<a id='reg-link' href="{%url 'auth'%}">общаться</a></p> -->
                 </div>
             </div>
@@ -86,7 +88,7 @@
                     <label for='nickname' class='form-label' id='cod-email-label'>Введите код с полученого сообщения</label>
                     <input type="text" class='form-control ' id='cod-email_account"' value='Fantom'>
                     <!-- Кнопка регистрации -->
-                    <input type="button" class="btn btn-dark" id="save-button" value="Изменить">
+                    <input type="button" class="btn-top btn btn-dark" id="save-button" value="Изменить">
                 </div>    
             </div>
         </div>
@@ -100,6 +102,7 @@
         crossorigin="anonymous"></script>
     <script type="text/javascript" src={% static 'js/auth.js' %}></script>
     <script type="text/javascript" src={% static 'js/reg.js' %}></script>
+    <script type="text/javascript" src={% static 'js/height.js' %}></script>
     {% block js %}
     {% endblock %}
 </body>

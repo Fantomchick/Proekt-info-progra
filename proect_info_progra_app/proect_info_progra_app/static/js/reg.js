@@ -1,3 +1,19 @@
+let timerInterval
+
+$('#email-btn').click(
+    function(){
+        let btnEmail=$('this')
+        let email=$('#email').val()
+        if (email==''){
+            alert('Введите почту')
+            return
+        }
+        btnEmail.prop('disabled')
+    }
+
+)
+
+
 $('#reg-btn').click(
     function() {
         let nickname=$('#nickname').val()
