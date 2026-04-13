@@ -4,6 +4,7 @@
     padding: 5px;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     background-color: rgb(34, 40, 49);
+    position: relative;
 
 }
 .modal-content{
@@ -80,16 +81,12 @@ label {
 h1 {
     text-align: center;
 }
-
-.email-input{
-    display: flex;
-    align-items: stretch;
-    width: 100%;
-    margin-top: 5px;
+.error-plaseholder::plaseholder {
+    width: 0px;
+    color: red !important;
 }
-.email-input .form-control{
-    flex: 1;
-    border-top-left-radius: 0;
-    border-bottom-right-radius: 0;
+
+#password-examination:focus {
+    border-color: #ced4da
 }
 

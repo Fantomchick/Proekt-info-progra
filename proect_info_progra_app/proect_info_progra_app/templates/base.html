@@ -14,9 +14,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
         integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href={%static 'style/footer.css' %}>
-    <link rel="stylesheet" href={%static 'style/reg-auth-account.css' %}></link>
-    <link rel="stylesheet" href={% static 'style/account.css' %}>
+    <!-- бутстрап икноки -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href={% static 'style/footer.css' %}>
+    <link rel="stylesheet" href={% static 'style/reg-auth-account.css' %}></link>
+    <link rel="stylesheet" href={% static 'style/email-examination.css' %}></link>
 
     {% block css %}{% endblock %}
     <!-- <link rel="stylesheet" href={% static 'css/footer.css' %}> -->
@@ -49,22 +51,27 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="card text-white">
+                    <button type="button" class='btn btn-outline-light' id='return-btn'><i class="bi bi-arrow-left"></i></button>
                     <h2 class="row justify-content-center" id='obsh'>СОЗДАТЬСЯ</h2>
-                    <label for='nickname' class='form-label' id='email-label'>Введите почту</label>
-                    <div class='input-email'>
+                    <div id="registration-fields">
+                        <label for='nickname' class='form-label' id='email-label'>Введите почту</label>
                         <input type="email" class='form-control ' id='email' value='Fantom@yandex.ru'>
-                        <input type="button" class='btn btn-dark' id='email-btn' value='Отправить код на почту'>
+                        <label for='nickname' class='form-label' id='nickname-label'>Придумайте ник</label>
+                        <input type="text" class='form-control ' id='nickname' value='Fantom'>
+                        <label for='password' class='form-label' id='password-label'>Придумайте пароль</label>
+                        <input type="password" class='form-control ' id='password' value='111fefefefef'>
+                        <label for='password' class='form-label' id='password-examination-label'>Повторите пароль</label>
+                        <input type="password" class='form-control ' id='password-examination' value='111fefefefef'>
+                        <input type="button" class='btn-top btn btn-dark' id='reg-btn' value='Создаться'>
                     </div>
-                    <label for='nickname' class='form-label' id='cod-email-label'>Введите код с полученого сообщения</label>
-                    <input type="text" class='form-control ' id='cod-email' value='Fantom'>
-                    <label for='nickname' class='form-label' id='nickname-label'>Придумайте ник</label>
-                    <input type="text" class='form-control ' id='nickname' value='Fantom'>
-                    <label for='password' class='form-label' id='password-label'>Придумайте пароль</label>
-                    <input type="password" class='form-control ' id='password' value='111fefefefef'>
-                    <label for='password' class='form-label' id='password-proverka-label'>Повторите пароль</label>
-                    <input type="password" class='form-control ' id='password-proverka' value='111fefefefef'>
-                    <input type="button" class='btn-top btn btn-dark' id='reg-btn' value='Создаться'>
-                    <!-- <p>Уже созданы? Тогда-<a id='reg-link' href="{%url 'auth'%}">общаться</a></p> -->
+                    <div id="verification-fields">
+                        <label for='nickname' class='form-label' id='cod-email-label'>Введите код с полученого сообщения</label>
+                        <div class='input-send-group'>
+                            <input type="text" class='form-control ' id='cod-email' value=''>
+                            <button type="button" class='btn btn-dark' id='resend-btn'>Повторная отправка</button>
+                        </div>
+                        <input type="button" class='btn-top btn btn-dark' id='reg-btn-finaly' value='Потвердить почту'>
+                    </div>
                 </div>
             </div>
         </div>                    
@@ -100,6 +107,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
+    <script type="text/javascript" src={% static 'js/return.js' %}></script>
+    <script type="text/javascript" src={% static 'js/timer-email.js' %}></script>
     <script type="text/javascript" src={% static 'js/auth.js' %}></script>
     <script type="text/javascript" src={% static 'js/reg.js' %}></script>
     <script type="text/javascript" src={% static 'js/height.js' %}></script>

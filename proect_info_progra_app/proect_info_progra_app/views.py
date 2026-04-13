@@ -1,11 +1,11 @@
+import random
+from django.core.mail import send_mail
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from django.http import JsonResponse,HttpResponse
 from .models import Topic
 from django.views.decorators.csrf import csrf_exempt
-
-from django.core.mail import send_mail
 #рендеринг индекса
 def index(request):
     try:
@@ -17,51 +17,80 @@ def index(request):
         return render(request,"index.html")
 
 def account(request):
-    print('Yes')
     try:
         if request.method == 'POST':
             email = request.POST.get('email')
             password = request.POST.get('password')
             nickname = request.POST.get('nickname')
             username = nickname       
-            print("Ник: ",username,'\n',"Пароль: ",password,"Почта",email,'\n',"Код",cod_email,'\n',"Пароль проверка",password_proverka,sep='')
+            print("Ник: ",username,'\n',"Пароль: ",password,"Почта",email,'\n',sep='')
             return JsonResponse({'status':'success'})
         return render(request,'account.html')
     except AttributeError:
         return HttpResponse("<h1>401 Unauthorized</h1>",status=401)
 @csrf_exempt
 def auth(request):
-    print('Yes')
     if request.method == 'POST':
         username = request.POST.get('nickname_auth')
         password = request.POST.get('password_auth')
-        #\n-это перенос строки
-        print("Ник: ",username,'\n',"Пароль: ",password,sep='')
-        #Авторизация здесь ищется зарегистрированого пользователя
         user=authenticate(request,username=username,password=password)
-        if user is not None: #Если пользователь есть
-            print('yes')
+        if user is not None:
             login(request, user )
             return JsonResponse({'status':'success'}) 
         else:
-            print('no')
             login(request, user )
             return JsonResponse({'status':'error'})  
     return render(request)
 @csrf_exempt
-def reg(request):
-    print('Yes')   
+def verify(request):
+    if request.method == 'POST':
+        email = request.POST.get('email')
+
+        if User.objects.filter(email=email).exists():
+            return JsonResponse({'error':'Пользователь с такой почтой уже есть'}, status=400)
+
+        code = str(random.randint(1000, 9999))
+        
+        request.session['verification_code'] = code
+        request.session['verifying_email'] = email
+        print(code)
+        
+        try:
+            send_mail(
+                'Код подтверждения регистрации',
+                f'Ваш код: {code}',
+                '@yandex.ru',#пока нет почты так как локалка
+                [email],
+                fail_silently=False,
+            )
+            return JsonResponse({'status': 'success'})
+        except Exception as e:
+            return JsonResponse({'error':str(e)}, status=500)
+
+@csrf_exempt
+def reg(request):   
     if request.method == 'POST':
         username = request.POST.get('nickname')
         password = request.POST.get('password')
         email = request.POST.get('email')
-        cod_email= request.POST.get('codEmail')
-        password_proverka = request.POST.get('passwordProverka')
-        user=User.objects.create_user(username,email,password)
-        login(request, user)
-        #\n-это перенос строки
-        print("Ник: ",username,'\n',"Пароль: ",password,"Почта",email,'\n',"Код",cod_email,'\n',"Пароль проверка",password_proverka,sep='')
-        return JsonResponse({'status':'success'})
+        password_email= request.POST.get('passwordEmail')
+        session_code = request.session.get('verification_code')
+        session_email = request.session.get('verifying_email')
+        print("Код",password_email,'\n',"Код c почты",session_code,)
+        if not session_code or password_email!= session_code:
+            return JsonResponse({'error':'Неверный код подтверждения'}, status=400)
+        
+        if email != session_email:
+            return JsonResponse({'error':'Ошибка почты'}, status=400)
+        try:
+            user=User.objects.create_user(username,email,password)
+            login(request, user)
+            del request.session['verification_code']
+            #\n-это перенос строки
+            print("Ник: ",username,'\n',"Пароль: ",password,"Почта",email,'\n',"Код",password_email,'\n',"Код c почты",session_code,'\n',sep='')
+            return JsonResponse({'status':'success'})
+        except Exception as e:
+            return JsonResponse({'error': 'Ошибка при создании'}, status=500)
 
     return render(request)
 
