@@ -60,18 +60,19 @@ $('#reg-btn-finaly').click(
         let nickname = $('#nickname').val()
         let password = $('#password').val()
         let email = $('#email').val()
-        let passwordEmail = $('#cod-email').val()        
+        let passwordEmail = $('#cod-email').val()
+        console.log(passwordEmail)        
         const regButton = $('#reg-btn-finaly');
         const CSRF = $('[name=csrfmiddlewaretoken]').val()
         let userData = {
             'nickname': nickname,
             'password': password,
             'email': email,
-            'passwordEmail ': passwordEmail,
+            'passwordEmail': passwordEmail,
             'csrfmiddlewaretoken': CSRF
         }
         $.ajax({
-            url: 'reg/',
+            url: '/reg/',
             type: 'POST',
             dataType: 'json',
             data: userData,
@@ -88,7 +89,7 @@ $('#reg-btn-finaly').click(
                 },
             error:
                 function (error) {
-                    console.error('Error', error);
+                    // console.error('Error', error);
                     alert(error.responseJSON.error);
                 },   
         });

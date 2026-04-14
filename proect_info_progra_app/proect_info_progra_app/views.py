@@ -76,7 +76,7 @@ def reg(request):
         password_email= request.POST.get('passwordEmail')
         session_code = request.session.get('verification_code')
         session_email = request.session.get('verifying_email')
-        print("Код",password_email,'\n',"Код c почты",session_code,)
+        print("Код",password_email,'\n',"Код c почты",session_code,sep='')
         if not session_code or password_email!= session_code:
             return JsonResponse({'error':'Неверный код подтверждения'}, status=400)
         
@@ -86,7 +86,6 @@ def reg(request):
             user=User.objects.create_user(username,email,password)
             login(request, user)
             del request.session['verification_code']
-            #\n-это перенос строки
             print("Ник: ",username,'\n',"Пароль: ",password,"Почта",email,'\n',"Код",password_email,'\n',"Код c почты",session_code,'\n',sep='')
             return JsonResponse({'status':'success'})
         except Exception as e:
@@ -155,34 +154,34 @@ def forum(request, themes_type):
     except AttributeError as e:
         return render(request,"forum.html") 
 def topic_template(request, id):
-        topic = Topic.objects.get(id = id)
-        flag=1
-        # Код для абзацев
+    topic = Topic.objects.get(id = id)
+    flag=1
+    # Код для абзацев
 
-        # topics = ''
-        # print(type(topics))
-        # topics = topic.topic_topic.split('\r\n')
-        # # print(topic.topic_topic[335])
-        # # print(ord(topic.topic_topic[335]))
+    # topics = ''
+    # print(type(topics))
+    # topics = topic.topic_topic.split('\r\n')
+    # # print(topic.topic_topic[335])
+    # # print(ord(topic.topic_topic[335]))
 
-        # for i in range(0, len(topics), 2):
-        #     topics[i] = '<p>' + topics[i] + '</p>'
-        # topics1=''
-        # for i in range(0, len(topics), 2):
-        #     topics1=topics1 + topics[i]         
-        # # print(topics)
-        # # print(topics[0])
-        # # print(topics1)
-        # topics = str(topics1)
-        # print('test topics: ', topics)
-        # print(type(topics))
+    # for i in range(0, len(topics), 2):
+    #     topics[i] = '<p>' + topics[i] + '</p>'
+    # topics1=''
+    # for i in range(0, len(topics), 2):
+    #     topics1=topics1 + topics[i]         
+    # # print(topics)
+    # # print(topics[0])
+    # # print(topics1)
+    # topics = str(topics1)
+    # print('test topics: ', topics)
+    # print(type(topics))
 
-        context= {
-            'flag_auth': flag, 
-            'username': request.user.username,
-            'topic' : topic,
-        }     
-        return render(request,"topic-template.html", context)        
+    context= {
+        'flag_auth': flag, 
+        'username': request.user.username,
+        'topic' : topic,
+    }     
+    return render(request,"topic-template.html", context)        
     # except:
     #     return render(request,"topic-template.html")     
     

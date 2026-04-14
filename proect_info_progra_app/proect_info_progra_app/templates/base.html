@@ -50,27 +50,30 @@
     <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="card text-white">
+                <div style="position: relative;">
                     <button type="button" class='btn btn-outline-light' id='return-btn'><i class="bi bi-arrow-left"></i></button>
-                    <h2 class="row justify-content-center" id='obsh'>СОЗДАТЬСЯ</h2>
-                    <div id="registration-fields">
-                        <label for='nickname' class='form-label' id='email-label'>Введите почту</label>
-                        <input type="email" class='form-control ' id='email' value='Fantom@yandex.ru'>
-                        <label for='nickname' class='form-label' id='nickname-label'>Придумайте ник</label>
-                        <input type="text" class='form-control ' id='nickname' value='Fantom'>
-                        <label for='password' class='form-label' id='password-label'>Придумайте пароль</label>
-                        <input type="password" class='form-control ' id='password' value='111fefefefef'>
-                        <label for='password' class='form-label' id='password-examination-label'>Повторите пароль</label>
-                        <input type="password" class='form-control ' id='password-examination' value='111fefefefef'>
-                        <input type="button" class='btn-top btn btn-dark' id='reg-btn' value='Создаться'>
-                    </div>
-                    <div id="verification-fields">
-                        <label for='nickname' class='form-label' id='cod-email-label'>Введите код с полученого сообщения</label>
-                        <div class='input-send-group'>
-                            <input type="text" class='form-control ' id='cod-email' value=''>
-                            <button type="button" class='btn btn-dark' id='resend-btn'>Повторная отправка</button>
+                    <div class="card text-white">
+                        <!-- <button type="button" class='btn btn-outline-light' id='return-btn'><i class="bi bi-arrow-left"></i></button> -->
+                        <h2 class="row justify-content-center" id='obsh'>СОЗДАТЬСЯ</h2>
+                        <div id="registration-fields">
+                            <label for='nickname' class='form-label' id='email-label'>Введите почту</label>
+                            <input type="email" class='form-control ' id='email' value='Fantom@yandex.ru'>
+                            <label for='nickname' class='form-label' id='nickname-label'>Придумайте ник</label>
+                            <input type="text" class='form-control ' id='nickname' value='Fantom'>
+                            <label for='password' class='form-label' id='password-label'>Придумайте пароль</label>
+                            <input type="password" class='form-control ' id='password' value='111fefefefef'>
+                            <label for='password' class='form-label' id='password-examination-label'>Повторите пароль</label>
+                            <input type="password" class='form-control ' id='password-examination' value='111fefefefef'>
+                            <input type="button" class='btn-top btn btn-dark' id='reg-btn' value='Создаться'>
                         </div>
-                        <input type="button" class='btn-top btn btn-dark' id='reg-btn-finaly' value='Потвердить почту'>
+                        <div id="verification-fields">
+                            <label for='nickname' class='form-label' id='cod-email-label'>Введите код с полученого сообщения</label>
+                            <div class='input-send-group'>
+                                <input type="text" class='form-control ' id='cod-email' >
+                                <button type="button" class='btn btn-dark' id='resend-btn'>Повторная отправка</button>
+                            </div>
+                            <input type="button" class='btn-top btn btn-dark' id='reg-btn-finaly' value='Потвердить почту'>
+                        </div>
                     </div>
                 </div>
             </div>
