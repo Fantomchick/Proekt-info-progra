@@ -15,10 +15,9 @@
     <div class="row d-flex justify-content-center">
         <div class="card_forum">
             <div class="card-body topic-card" onClick="window.location='/forum/topic/{{topic.id}}'">
-                <h5 class="card-title">{{topic.topic_title}}</h5>
+                <h5 class="card-title">{{topic.topic_title}} <p class='text-secondary'># {{topic.}}</p></h5>
                 <div class='row justify-content-start'>
-                    <p id="distance"><img src={%static 'img/eyes.png' %} id="eyes">{{topic.topic_views}}<img
-                            src={%static 'img/watch.png' %} id="watch">{{topic.topic_date}}</p>
+                    <p id="distance"><img src={%static 'img/eyes.png' %} id="eyes">{{topic.topic_views}}<img src={%static 'img/watch.png' %} id="watch">{{topic.topic_date}}</p>
                 </div>
                 <p class="card-text">{{ topic.topic_topic|linebreaks }}</p>
                 {% comment %} <a href="/forum/topic/{{topic.id}}" class="btn btn-primary">Прочитать</a> {% endcomment %}

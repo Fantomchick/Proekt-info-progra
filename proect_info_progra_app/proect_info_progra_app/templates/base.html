@@ -72,7 +72,7 @@
                                 <input type="text" class='form-control ' id='cod-email' >
                                 <button type="button" class='btn btn-dark' id='resend-btn'>Повторная отправка</button>
                             </div>
-                            <input type="button" class='btn-top btn btn-dark' id='reg-btn-finaly' value='Потвердить почту'>
+                            <input type="button" class='btn-top btn btn-dark' id='mail-confirmation-btn' value='Потвердить почту'>
                         </div>
                     </div>
                 </div>
@@ -115,6 +115,8 @@
     <script type="text/javascript" src={% static 'js/auth.js' %}></script>
     <script type="text/javascript" src={% static 'js/reg.js' %}></script>
     <script type="text/javascript" src={% static 'js/height.js' %}></script>
+    <script type="text/javascript" src={% static 'js/resend.js' %}></script>
+    <script type="text/javascript" src={% static 'js/mail-confirmation.js' %}></script>
     {% block js %}
     {% endblock %}
 </body>
