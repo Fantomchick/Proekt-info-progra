@@ -6,7 +6,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Fancom{% endblock %}</title>
-
+    <link rel='icon' href={%static 'img/faicon.png' %}>
+    </link>
     <!-- Bootstrap 5.3 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
@@ -42,7 +43,6 @@
                     <label for='password' class='form-label' id='password-label'>Введите свой пароль <a id='reg-link' href="{%url 'account'%}">или нажмите сюда, если забыли его</a></label>
                     <input type="password" class='form-control ' id='password_auth' value='111fefefefef'>
                     <input type="button" class='btn-top btn btn-dark' id='auth-btn' value='Общаться'>
-                    <!-- <p>Ещё не создались ? Тогда-<a id='reg-link' href="{%url 'reg'%}">создаться</a></p> -->
                 </div>
             </div>
         </div>
@@ -57,7 +57,7 @@
                         <h2 class="row justify-content-center" id='obsh'>СОЗДАТЬСЯ</h2>
                         <div id="registration-fields">
                             <label for='nickname' class='form-label' id='email-label'>Введите почту</label>
-                            <input type="email" class='form-control ' id='email' value='Fantom@yandex.ru'>
+                            <input type="email" class='form-control ' id='Email' value='Fantom@yandex.ru'>
                             <label for='nickname' class='form-label' id='nickname-label'>Придумайте ник</label>
                             <input type="text" class='form-control ' id='nickname' value='Fantom'>
                             <label for='password' class='form-label' id='password-label'>Придумайте пароль</label>

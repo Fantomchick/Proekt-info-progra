@@ -34,6 +34,30 @@ body {
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     background-color: #1E293B;
 }
+@media screen and (max-width: 600px) {
+    header {
+        height: 15rem;
+    }
+
+    #article{
+        width: 90%;
+        max-width: 450px;
+        border-radius: 12px;
+        border-color: #1E293B;
+        border-style: solid;
+        padding: 0 20px 20px;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        background-color: #1E293B;
+        margin: 1rem auto;
+    }
+    #topic-title {
+        margin-top: 0rem;
+    }
+    /* #topic-title{
+        margin-top: 0.5rem;
+    } */
+
+}
 #topic-title {
     font-size: 2rem;
     color: #F1F5F9;

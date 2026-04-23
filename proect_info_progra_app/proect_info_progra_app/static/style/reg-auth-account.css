@@ -72,6 +72,20 @@ p { color: #ffffff; }
     header {
         height: 15rem;
     }
+    .card {
+    border-radius: 15px;
+    border-style: solid;
+    padding: 30px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    background-color: rgb(34, 40, 49);
+    position: relative;
+    }
+    .modal-content{
+        width: 90%;
+        margin: 0 auto;
+        margin-top: 5rem;
+        height: auto;
+    }    
 
 }
 label {

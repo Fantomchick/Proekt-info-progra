@@ -7,7 +7,8 @@ function startResendTimer(buttonId, seconds) {
     let timeLeft = seconds;
     btn.prop('disabled', true);
     btn.addClass('disabled-style');
-
+    btn.text(`Повтор через (${timeLeft}с)`);
+    
     resendTimerInterval = setInterval(function () {
         timeLeft--;
         btn.text(`Повтор через (${timeLeft}с)`);

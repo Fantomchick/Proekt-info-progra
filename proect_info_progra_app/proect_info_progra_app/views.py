@@ -72,16 +72,13 @@ def reg(request):
     if request.method == 'POST':
         username = request.POST.get('nickname')
         password = request.POST.get('password')
-        email = request.POST.get('email')
         password_email= request.POST.get('passwordEmail')
         session_code = request.session.get('verification_code')
-        session_email = request.session.get('verifying_email')
+        email = request.session.get('verifying_email')
         print("Код",password_email,'\n',"Код c почты",session_code,sep='')
         if not session_code or password_email!= session_code:
             return JsonResponse({'error':'Неверный код подтверждения'}, status=400)
         
-        if email != session_email:
-            return JsonResponse({'error':'Ошибка почты'}, status=400)
         try:
             user=User.objects.create_user(username,email,password)
             login(request, user)

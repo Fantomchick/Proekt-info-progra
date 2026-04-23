@@ -12,10 +12,9 @@
 <main class="container" id="topic">
     <div class="row d-flex justify-content-center">
         <div class="col-8" id="article">
-            <div>
-                <div id="topic-title">{{ topic.topic_title }}</div>
-                <p id="distance"><img src={%static 'img/eyes.png' %} id="eyes">{{topic.topic_views}}<img
-                        src={%static 'img/watch.png' %} id="watch">{{topic.topic_date}}</p>
+            <div class="card-body topic-card">
+                <h5 id="topic-title">{{ topic.topic_title }}</h5>
+                <p id="distance"><img src={%static 'img/eyes.png' %} id="eyes">{{topic.topic_views}}<img src={%static 'img/watch.png' %} id="watch">{{topic.topic_date}}</p>
             </div>
             <div id="topic_text">{{ topic.topic_topic|linebreaks }}</div>
             <div class="row d-flex justify-content-center">

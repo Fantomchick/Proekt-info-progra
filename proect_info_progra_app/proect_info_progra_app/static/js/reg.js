@@ -1,7 +1,7 @@
 $('#reg-btn').click(
     function() {
         let password=$('#password').val()
-        let email=$('#email').val()
+        let email = $('#Email').val()
         console.log(email)
         let passwordExamination = $('#password-examination').val()
         const CSRF= $('[name=csrfmiddlewaretoken]').val()

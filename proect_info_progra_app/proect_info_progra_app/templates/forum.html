@@ -4,7 +4,6 @@
 {% block title %}Fancom{% endblock %}
 {% block css %}
 <!-- Связывание с CSS файлом -->
-<link rel='icon' href={%static 'img/faicon.png' %}></link>
 <link rel="stylesheet" href={%static 'style/forum.css' %}>
 {% endblock %}
 {% block content %}
@@ -15,9 +14,9 @@
     <div class="row d-flex justify-content-center">
         <div class="card_forum">
             <div class="card-body topic-card" onClick="window.location='/forum/topic/{{topic.id}}'">
-                <h5 class="card-title">{{topic.topic_title}} <p class='text-secondary'># {{topic.}}</p></h5>
-                <div class='row justify-content-start'>
-                    <p id="distance"><img src={%static 'img/eyes.png' %} id="eyes">{{topic.topic_views}}<img src={%static 'img/watch.png' %} id="watch">{{topic.topic_date}}</p>
+                <h5 class="card-title">{{topic.topic_title}} <span class='text-secondary category'>#{{topic.get_themes_type_display}}</span></h5>
+                <div class='row justify-content-start icon_forum'>
+                    <p id="distance"><img  src={%static 'img/eyes.png' %} id="eyes">{{topic.topic_views}}<img src={%static 'img/watch.png' %} id="watch">{{topic.topic_date}}</p>
                 </div>
                 <p class="card-text">{{ topic.topic_topic|linebreaks }}</p>
                 {% comment %} <a href="/forum/topic/{{topic.id}}" class="btn btn-primary">Прочитать</a> {% endcomment %}
