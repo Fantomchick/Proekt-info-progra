@@ -1,0 +1,126 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Fancom{% endblock %}</title>
+    <link rel='icon' href={%static 'img/faicon.png' %}>
+    </link>
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <!-- Font Awesome подключение -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- бутстрап икноки -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href={% static 'style/footer.css' %}>
+    <link rel="stylesheet" href={% static 'style/reg-auth-account.css' %}></link>
+    <link rel="stylesheet" href={% static 'style/email-examination.css' %}></link>
+
+
+    {% block css %}{% endblock %}
+    <!-- <link rel="stylesheet" href={% static 'css/footer.css' %}> -->
+</head>
+
+<body>
+    {% include 'parcticles/nav.html' %}
+    {% csrf_token %}
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    {% include 'parcticles/footer.html' %}
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">  
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="card text-white">
+                    <h2 class="row justify-content-center" id='obsh'>ОБЩАТЬСЯ</h2>
+                    <label for='nickname' class='form-label' id='nickname-label'>Введите свой ник <a id='reg-link' href="{%url 'account'%}">или нажмите сюда, если забыли его</a></label>
+                    <input type="text" class='form-control ' id='nickname_auth' value='Fantom'>
+                    <label for='password' class='form-label' id='password-label'>Введите свой пароль <a id='reg-link' href="{%url 'account'%}">или нажмите сюда, если забыли его</a></label>
+                    <input type="password" class='form-control ' id='password_auth' value='111fefefefef'>
+                    <input type="button" class='btn-top btn btn-dark' id='auth-btn' value='Общаться'>
+                </div>
+            </div>
+        </div>
+    </div>           
+    <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div style="position: relative;">
+                    <button type="button" class='btn btn-outline-light' id='return-btn'><i class="bi bi-arrow-left"></i></button>
+                    <div class="card text-white">
+                        <!-- <button type="button" class='btn btn-outline-light' id='return-btn'><i class="bi bi-arrow-left"></i></button> -->
+                        <h2 class="row justify-content-center" id='obsh'>СОЗДАТЬСЯ</h2>
+                        <div id="registration-fields">
+                            <label for='nickname' class='form-label' id='email-label'>Введите почту</label>
+                            <input type="email" class='form-control ' id='Email' value='Fantom@yandex.ru'>
+                            <label for='nickname' class='form-label' id='nickname-label'>Придумайте ник</label>
+                            <input type="text" class='form-control ' id='nickname' value='Fantom'>
+                            <label for='password' class='form-label' id='password-label'>Придумайте пароль</label>
+                            <input type="password" class='form-control ' id='password' value='111fefefefef'>
+                            <label for='password' class='form-label' id='password-examination-label'>Повторите пароль</label>
+                            <input type="password" class='form-control ' id='password-examination' value='111fefefefef'>
+                            <input type="button" class='btn-top btn btn-dark' id='reg-btn' value='Создаться'>
+                        </div>
+                        <div id="verification-fields">
+                            <label for='nickname' class='form-label' id='cod-email-label'>Введите код с полученого сообщения</label>
+                            <div class='input-send-group'>
+                                <input type="text" class='form-control ' id='cod-email' >
+                                <button type="button" class='btn btn-dark' id='resend-btn'>Повторная отправка</button>
+                            </div>
+                            <input type="button" class='btn-top btn btn-dark' id='mail-confirmation-btn' value='Потвердить почту'>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>                    
+    </div>  
+    <div class="modal fade" id="account" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="card text-white">
+                    <h1>Настройки профиля</h1>
+                    <!-- Пароль -->
+                    <label for="password" class="form-label reg-label">Введите новый пароль, если хотите его изменить или введите
+                        старый</label>
+                    <input type="password" class="form-control" id="password_account" placeholder="Введите пароль" value="{{ password }}">
+                    <!-- Имя -->
+                    <label for="first-name" class="form-label">Введите новый ник, если хотите его изменить или введите старый</label>
+                    <input type="text" class="form-control" id="nickname_account"" placeholder="Введите ник" value="{{ nickname }}">
+                    <!-- Почта -->
+                    <label for="email" class="form-label reg-label">Электронная почта</label>
+                    <input type="email" class="form-control" id="email_account"" placeholder="Введите почту и ждите код для потверждения"
+                        value="{{ email }}">
+                    <label for='nickname' class='form-label' id='cod-email-label'>Введите код с полученого сообщения</label>
+                    <input type="text" class='form-control ' id='cod-email_account"' value='Fantom'>
+                    <!-- Кнопка регистрации -->
+                    <input type="button" class="btn-top btn btn-dark" id="save-button" value="Изменить">
+                </div>    
+            </div>
+        </div>
+    </div>            
+
+    <!-- jQuery 3.7.1 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- Bootstrap 5.3 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <script type="text/javascript" src={% static 'js/return.js' %}></script>
+    <script type="text/javascript" src={% static 'js/timer-email.js' %}></script>
+    <script type="text/javascript" src={% static 'js/auth.js' %}></script>
+    <script type="text/javascript" src={% static 'js/reg.js' %}></script>
+    <script type="text/javascript" src={% static 'js/height.js' %}></script>
+    <script type="text/javascript" src={% static 'js/resend.js' %}></script>
+    <script type="text/javascript" src={% static 'js/mail-confirmation.js' %}></script>
+    {% block js %}
+    {% endblock %}
+</body>
+
+</html>

@@ -1,0 +1,106 @@
+.card {
+    border-radius: 15px;
+    border-style: solid;
+    padding: 5px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    background-color: rgb(34, 40, 49);
+    position: relative;
+
+}
+.modal-content{
+    border-radius: 25px;
+    margin-top: 5rem;
+    background-color:rgb(34, 40, 49); ;
+}
+.btn-top{
+    margin-top: 1rem;
+}
+#nav-login {
+    background-color: black;
+}
+
+#obsh {
+    align-items: center;
+}
+
+p {
+    color: #ffffff;
+}
+
+#reg-link:hover{
+    text-decoration:underline
+}
+
+#reg-link:active{
+    color:coral
+}
+
+#reg-link{
+    color:rgb(255, 255, 255);
+    text-decoration:none;
+}
+
+.account {
+    margin-top: 2.5rem;
+}
+#nav-login{
+    background-color: black;
+}
+#obsh{
+    align-items: center;
+}
+p { color: #ffffff; }
+
+#password-label{
+    margin-top: 1rem;
+}
+
+#save-button:hover{
+    text-decoration:underline
+}
+
+#save-button:active{
+    color:coral
+}
+
+#save-button{
+    color:rgb(255, 255, 255);
+    text-decoration:none;
+}
+
+@media screen and (max-width: 600px) {
+    header {
+        height: 15rem;
+    }
+    .card {
+    border-radius: 15px;
+    border-style: solid;
+    padding: 30px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    background-color: rgb(34, 40, 49);
+    position: relative;
+    }
+    .modal-content{
+        width: 90%;
+        margin: 0 auto;
+        margin-top: 5rem;
+        height: auto;
+    }    
+
+}
+label {
+    margin-top: 0.5rem;
+}
+
+h1 {
+    text-align: center;
+}
+.error-plaseholder::plaseholder {
+    width: 0px;
+    color: red !important;
+}
+
+#password-examination:focus {
+    border-color: #ced4da
+}
+

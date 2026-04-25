@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 import os
+from .personal_info import MY_EMAIL_HOST_USER, MY_EMAIL_HOST_PASSWORD
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,6 +26,24 @@ SECRET_KEY = 'django-insecure-!+-zl26fj#61^4kgfok0w&gj$f9m5#5p9u^p$c866iee^#*ed_
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+#код нужный для работы почты
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.yandex.ru'
+EMAIL_PORT = 465#порт яндекса 465
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = True
+if MY_EMAIL_HOST_USER and MY_EMAIL_HOST_PASSWORD:
+    EMAIL_HOST_USER = MY_EMAIL_HOST_USER
+    EMAIL_HOST_PASSWORD = MY_EMAIL_HOST_PASSWORD
+else:
+    EMAIL_HOST_USER = None
+    EMAIL_HOST_PASSWORD = None
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+EMAIL_TIMEOUT = 20
+
 
 ALLOWED_HOSTS = []
 

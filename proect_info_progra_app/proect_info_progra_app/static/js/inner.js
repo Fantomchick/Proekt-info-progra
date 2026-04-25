@@ -1,3 +1,7 @@
+
+
+
+
 $("body").prepend(`
 	<!-- Панель навигации -->
 	<nav class="navbar navbar-expand-lg">
