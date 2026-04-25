@@ -21,12 +21,14 @@
     <link rel="stylesheet" href={% static 'style/reg-auth-account.css' %}></link>
     <link rel="stylesheet" href={% static 'style/email-examination.css' %}></link>
 
+
     {% block css %}{% endblock %}
     <!-- <link rel="stylesheet" href={% static 'css/footer.css' %}> -->
 </head>
 
 <body>
     {% include 'parcticles/nav.html' %}
+    {% csrf_token %}
 
     <main>
         {% block content %}{% endblock %}

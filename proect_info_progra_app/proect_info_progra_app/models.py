@@ -26,3 +26,9 @@ class Topic(models.Model):
 
     def __str__(self):
         return f'{self.topic_title}'
+    
+class EmailDigest(models.Model):
+    email = models.EmailField()
+
+    def __str__(self):
+        return f'{self.email}'    

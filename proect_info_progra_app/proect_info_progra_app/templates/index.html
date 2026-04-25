@@ -110,9 +110,8 @@
                     <br>
 					<h2 class="title-main" id="ki-fedback-text">Как попасть к нам в разработку</h2>
 					<h6 class="title-text">Оставьте свой адрес почты и мы с вами свяжемся</h6>
-					<form action="" method="POST">
-						<input type="email" class="form-control" name="mail" id="email" placeholder="Введите адрес почты">
-						<input type="submit" id="submit" class="form-control" value="Отправить">
+						<input type="email" class="form-control" name="mail" id="email-job" placeholder="Введите адрес почты">
+						<input type="submit" id="submit-btn" class="form-control" value="Отправить">
 					</form>
 				</div>
 			</div>
@@ -122,4 +121,6 @@
 
 	<!-- Подвал -->   
     <!-- Собственные JS-скрипты -->
-    <!-- <script src={%static 'js/svg-paste.js'%}></script> -->
+{% block js %}
+    <script src={%static 'js/job-email.js'%}></script> 
+{% endblock %}

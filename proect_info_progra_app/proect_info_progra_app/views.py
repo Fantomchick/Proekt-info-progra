@@ -4,8 +4,10 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from django.http import JsonResponse,HttpResponse
-from .models import Topic
+from .models import Topic, EmailDigest
 from django.views.decorators.csrf import csrf_exempt
+from django.core.validators import validate_email
+from django.core.exceptions import ValidationError
 #рендеринг индекса
 def index(request):
     try:
@@ -43,11 +45,18 @@ def auth(request):
     return render(request)
 @csrf_exempt
 def verify(request):
-    if request.method == 'POST':
-        email = request.POST.get('email')
+    if request.method == 'POST' and request.POST.get('email'):
+
+        try:
+            email = request.POST.get('email')
+            validate_email(email)
+            print('Получилось взять имейл: ', email)
+        except ValidationError:
+            return JsonResponse({'status': 'error', 'message' :'Неправильно ввёден адрес почты'}, status=400)
+
 
         if User.objects.filter(email=email).exists():
-            return JsonResponse({'error':'Пользователь с такой почтой уже есть'}, status=400)
+            return JsonResponse({'status': 'error', 'message' :'Пользователь с такой почтой уже есть'}, status=400)
 
         code = str(random.randint(1000, 9999))
         
@@ -59,13 +68,40 @@ def verify(request):
             send_mail(
                 'Код подтверждения регистрации',
                 f'Ваш код: {code}',
-                '@yandex.ru',#пока нет почты так как локалка
+                'iskkab2000@yandex.ru',#пока нет почты так как локалка
                 [email],
                 fail_silently=False,
             )
             return JsonResponse({'status': 'success'})
         except Exception as e:
-            return JsonResponse({'error':str(e)}, status=500)
+            return JsonResponse({'status': 'error', 'message' :str(e)}, status=500)
+@csrf_exempt
+def email(request):
+    if request.method == 'POST' and request.POST.get('email_job'):
+        
+        try:
+            email = request.POST.get('email_job')
+            validate_email(email)
+            print('Получилось взять имейл: ', email)
+        except ValidationError:
+            return JsonResponse({'status': 'error', 'message' : 'Неправильно ввёден адрес почты'}, status=400)
+        
+        if User.objects.filter(email=email).exists():
+            return JsonResponse({'status': 'error', 'message':'Пользователь с такой почтой уже есть'}, status=400)
+        
+        send_mail(
+            "Полезная рассылка",
+            "Вы будете получать полезную рассылку о полезных продуктах.",
+            'iskkab2000@yandex.ru',
+            [email],
+            fail_silently=False,
+        )
+
+        email_digest = EmailDigest(email = email)
+        email_digest.save()
+
+        return JsonResponse({'status': 'success', 'message' : 'Отправлено'})
+    return JsonResponse({'status' : 'error', 'message' : 'Метод не разрешён. Только POST.'}, status=405)
 
 @csrf_exempt
 def reg(request):   
@@ -77,16 +113,16 @@ def reg(request):
         email = request.session.get('verifying_email')
         print("Код",password_email,'\n',"Код c почты",session_code,sep='')
         if not session_code or password_email!= session_code:
-            return JsonResponse({'error':'Неверный код подтверждения'}, status=400)
+            return JsonResponse({'status': 'error', 'message' :'Неверный код подтверждения'}, status=400)
         
         try:
             user=User.objects.create_user(username,email,password)
             login(request, user)
             del request.session['verification_code']
             print("Ник: ",username,'\n',"Пароль: ",password,"Почта",email,'\n',"Код",password_email,'\n',"Код c почты",session_code,'\n',sep='')
-            return JsonResponse({'status':'success'})
+            return JsonResponse({'status': 'success', 'message' :'success'})
         except Exception as e:
-            return JsonResponse({'error': 'Ошибка при создании'}, status=500)
+            return JsonResponse({'status': 'error', 'message' : 'Ошибка при создании'}, status=500)
 
     return render(request)
 
