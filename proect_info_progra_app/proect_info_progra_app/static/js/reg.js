@@ -30,8 +30,8 @@ $('#reg-btn').click(
             },
             error: function(xhr){
                 if(xhr.responseJSON) {
-                    regtButton.val(error.responseJSON.error)
-                    alert(error.responseJSON.error);
+                    regtButton.val(xhr.responseJSON.message);
+                    alert(xhr.responseJSON.message);
                 }
             }        
         });

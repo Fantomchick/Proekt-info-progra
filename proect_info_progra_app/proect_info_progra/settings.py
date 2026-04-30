@@ -26,9 +26,6 @@ SECRET_KEY = 'django-insecure-!+-zl26fj#61^4kgfok0w&gj$f9m5#5p9u^p$c866iee^#*ed_
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
 #код нужный для работы почты
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.yandex.ru'

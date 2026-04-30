@@ -63,6 +63,7 @@ def verify(request):
         request.session['verification_code'] = code
         request.session['verifying_email'] = email
         print(code)
+        print(email)
         
         try:
             send_mail(
@@ -74,7 +75,9 @@ def verify(request):
             )
             return JsonResponse({'status': 'success'})
         except Exception as e:
-            return JsonResponse({'status': 'error', 'message' :str(e)}, status=500)
+            print({e})
+            return JsonResponse({'status': 'error', 'message' :'Произошла ошибка отправки кода, заполните повторно форму'}, status=500)
+    return JsonResponse({'status' : 'error', 'message' : 'Метод не разрешён. Только POST.'}, status=405)
 @csrf_exempt
 def email(request):
     if request.method == 'POST' and request.POST.get('email_job'):
@@ -122,6 +125,7 @@ def reg(request):
             print("Ник: ",username,'\n',"Пароль: ",password,"Почта",email,'\n',"Код",password_email,'\n',"Код c почты",session_code,'\n',sep='')
             return JsonResponse({'status': 'success', 'message' :'success'})
         except Exception as e:
+            print({e})
             return JsonResponse({'status': 'error', 'message' : 'Ошибка при создании'}, status=500)
 
     return render(request)

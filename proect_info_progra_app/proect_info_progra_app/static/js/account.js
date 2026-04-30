@@ -5,7 +5,7 @@ $('#save-button').click(
         let password = $('#password_account"').val();
         let nickname = $('#nickname_account"').val();
         let codEmail = $('#cod-email_account"').val()
-        let regButton = $('#save-button');
+        let accountButton = $('#save-button');
 
         const CSRF = $('[name=csrfmiddlewaretoken]').val();
 
@@ -33,13 +33,13 @@ $('#save-button').click(
                     });
                     window.location.href = '/'; //Переход на главную сайта
                 },
-            error:
-                function (data) {
-                    console.log('Error: ', data);
-                    regButton.text("Нет такого пользователя");
-                    regButton.prop('disabled', false);
-                    alert("Такой пользователь уже существует!")
-                },               
+            error: function (xhr) {
+                if (xhr.responseJSON) {
+                    accountButton.prop('disabled', false);
+                    accountButton.val(xhr.responseJSON.message);
+                    alert(xhr.responseJSON.message);
+                }
+            }              
         });
     }
 );
