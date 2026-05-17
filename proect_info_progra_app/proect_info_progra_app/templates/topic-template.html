@@ -7,6 +7,7 @@
 <link rel='icon' href={%static 'img/faicon.png' %}>
 </link>
 <link rel="stylesheet" href={% static 'style/topic.css' %}></link>
+<link rel="stylesheet" href={%static 'style/forum-template.css' %}>
 {% endblock %}
 {% block content %}
 <main class="container" id="topic">
@@ -14,7 +15,7 @@
         <div class="col-8" id="article">
             <div class="card-body topic-card">
                 <h5 id="topic-title">{{ topic.topic_title }}</h5>
-                <p id="distance"><img src={%static 'img/eyes.png' %} id="eyes">{{topic.topic_views}}<img src={%static 'img/watch.png' %} id="watch">{{topic.topic_date}}</p>
+                <p id="distance"><img src={%static 'img/eyes.png' %} id="eyes">{{topic.topic_views}}<img src={%static 'img/watch.png' %} id="watch"><span class='topic-date' data-timestamp='{{topic.topic_date|date:"c" }}'>{{topic.topic_date|date:"d.m.Y H:i:s"}}</span></p>
             </div>
             <div id="topic_text">{{ topic.topic_topic|linebreaks }}</div>
             <div class="row d-flex justify-content-center">
@@ -28,7 +29,7 @@
 {% endblock %}
 {% block js %}
 <script src={% static 'js/topic.js' %}></script>
-
+<script src={% static 'js/date.js' %}></script>
 <!-- Код для создания абзацев -->
 <!-- <script src={% static 'js/slice-text.js' %}></script> -->
 {% endblock %}

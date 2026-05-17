@@ -5,6 +5,7 @@
 {% block css %}
 <!-- Связывание с CSS файлом -->
 <link rel="stylesheet" href={%static 'style/forum.css' %}>
+<link rel="stylesheet" href={%static 'style/forum-template.css' %}>
 {% endblock %}
 {% block content %}
 {% csrf_token %}
@@ -15,8 +16,8 @@
         <div class="card_forum">
             <div class="card-body topic-card" onClick="window.location='/forum/topic/{{topic.id}}'">
                 <h5 class="card-title">{{topic.topic_title}} <span class='text-secondary category'>#{{topic.get_themes_type_display}}</span></h5>
-                <div class='row justify-content-start icon_forum'>
-                    <p id="distance"><img  src={%static 'img/eyes.png' %} id="eyes">{{topic.topic_views}}<img src={%static 'img/watch.png' %} id="watch">{{topic.topic_date}}</p>
+                <div class='row justify-content-start flex icon_forum'>
+                    <p id="distance" class='d-flex'><img class='topic-margin'  src={%static 'img/eyes.png' %} id="eyes"> <span>{{topic.topic_views}}</span> <img class='topic-margin' src={%static 'img/watch.png' %} id="watch"> <span class='topic-date' data-timestamp='{{topic.topic_date|date:"c" }}'>{{topic.topic_date|date:"d.m.Y H:i:s"}}</span></p>
                 </div>
                 <p class="card-text">{{ topic.topic_topic|linebreaks }}</p>
                 {% comment %} <a href="/forum/topic/{{topic.id}}" class="btn btn-primary">Прочитать</a> {% endcomment %}
@@ -27,5 +28,5 @@
 </main>
 {% endblock %}
 {% block js %}
-
+<script src={% static 'js/date.js' %}></script>
 {% endblock %}
