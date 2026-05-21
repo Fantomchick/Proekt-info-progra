@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils import timezone
 # from transliterate import translit
 
 class Topic(models.Model):
@@ -23,7 +24,6 @@ class Topic(models.Model):
     topic_date=models.DateTimeField()#Время появления темы
     # topic_author=User.username #Автор
     themes_type=models.CharField(max_length = 100,choices = themes_types)
-
     def __str__(self):
         return f'{self.topic_title}'
     
@@ -31,4 +31,13 @@ class EmailDigest(models.Model):
     email = models.EmailField()
 
     def __str__(self):
-        return f'{self.email}'    
+        return f'{self.email}'
+class Comment(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    post = models.ForeignKey(Topic, on_delete=models.CASCADE)
+    text = models.TextField()
+    created = models.DateTimeField(default=timezone.now, null=True)
+    moderation = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f'{self.text}'    

@@ -1,3 +1,23 @@
 .topic-margin{
     margin-top: 5px;
 }
+.category {
+    font-size: 0.8rem;
+}
+#eyes {
+    color: #F1F5F9;
+    height: 1rem;
+    margin-right: 4px;
+    width: 1rem;
+}
+
+#watch {
+    color: #F1F5F9;
+    margin-left: 1rem;
+    margin-right: 4px;
+    height: 1rem;
+    width: 1rem;
+}
+p {
+    color: #F1F5F9;
+}

@@ -14,8 +14,13 @@
     <div class="row d-flex justify-content-center">
         <div class="col-8" id="article">
             <div class="card-body topic-card">
-                <h5 id="topic-title">{{ topic.topic_title }}</h5>
-                <p id="distance"><img src={%static 'img/eyes.png' %} id="eyes">{{topic.topic_views}}<img src={%static 'img/watch.png' %} id="watch"><span class='topic-date' data-timestamp='{{topic.topic_date|date:"c" }}'>{{topic.topic_date|date:"d.m.Y H:i:s"}}</span></p>
+                <h5 class="card-title" id="topic-title">{{ topic.topic_title }} <span class='text-secondary category'>#{{topic.get_themes_type_display}}</span></h5>
+                <div class='row justify-content-start flex icon_forum'>
+                    <p id="distance" class='d-flex'><img class='topic-margin' src={%static 'img/eyes.png' %} id="eyes">
+                        <span>{{topic.topic_views}}</span> <img class='topic-margin' src={%static 'img/watch.png' %} id="watch"> <span
+                            class='topic-date' data-timestamp='{{topic.topic_date|date:"c" }}'>{{topic.topic_date|date:"d.m.Y
+                            H:i:s"}}</span></p>
+                </div>
             </div>
             <div id="topic_text">{{ topic.topic_topic|linebreaks }}</div>
             <div class="row d-flex justify-content-center">
