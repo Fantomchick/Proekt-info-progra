@@ -28,9 +28,21 @@
                 <img src={{ topic.topic_image.url }} alt={{ topic.topic_title }} id="topic-image">
                 {% endif %}
             </div>
+            <ul>
+                {% for comment in comments %}
+                <li><strong>{{ comment.user.username }}</strong>: {{ comment.text }} ({{ comment.created }})</li>
+                {% empty %}
+                <li class="text-white">No comments yet.</li>
+                {% endfor %}
+
+                {% csrf_token %}
+                <textarea></textarea>
+                <button>Add Comment</button>
+            </ul>
         </div>
     </div>
 </main>
+
 {% endblock %}
 {% block js %}
 <script src={% static 'js/topic.js' %}></script>

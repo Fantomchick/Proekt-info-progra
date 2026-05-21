@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from django.http import JsonResponse,HttpResponse
-from .models import Topic, EmailDigest
+from .models import Topic, EmailDigest, Comment
 from django.views.decorators.csrf import csrf_exempt
 from django.core.validators import validate_email
 from django.core.exceptions import ValidationError
@@ -192,6 +192,7 @@ def forum(request, themes_type):
         return render(request,"forum.html") 
 def topic_template(request, id):
     topic = Topic.objects.get(id = id)
+    comments = topic.comments.all().order_by('-created')
     flag=1
     # Код для абзацев
 
@@ -217,6 +218,7 @@ def topic_template(request, id):
         'flag_auth': flag, 
         'username': request.user.username,
         'topic' : topic,
+        'comments' : comments
     }     
     return render(request,"topic-template.html", context)        
     # except:

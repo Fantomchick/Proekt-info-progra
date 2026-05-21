@@ -34,7 +34,7 @@ class EmailDigest(models.Model):
         return f'{self.email}'
 class Comment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    post = models.ForeignKey(Topic, on_delete=models.CASCADE)
+    post = models.ForeignKey(Topic, related_name='comments', on_delete=models.CASCADE)
     text = models.TextField()
     created = models.DateTimeField(default=timezone.now, null=True)
     moderation = models.BooleanField(default=False)
