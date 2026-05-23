@@ -8,6 +8,7 @@ from .models import Topic, EmailDigest, Comment
 from django.views.decorators.csrf import csrf_exempt
 from django.core.validators import validate_email
 from django.core.exceptions import ValidationError
+from django.db.models import Count, F
 #рендеринг индекса
 def index(request):
     try:
@@ -167,15 +168,17 @@ def logout_view(request):
     logout(request)
     return redirect('index')
 
+
 def forum(request, themes_type):
     try:
         type_name = ''
         if themes_type == "all":
-            topic = Topic.objects.all()
+            # annotate добавляет каждому объекту topic виртуальное поле 'comments_count'
+            topic= Topic.objects.annotate(comments_count=Count('comments')).all()
+
         else:    
-            topic = Topic.objects.filter(themes_type = themes_type)
+            topic = Topic.objects.filter(themes_type = themes_type).annotate(comments_count=Count('comments'))
             topic_type = Topic.themes_types
-            print(topic_type)
             for tp in topic_type:
                 if tp[0] == themes_type:
                     type_name = str(tp[1])
@@ -194,8 +197,13 @@ def topic_template(request, id):
     topic = Topic.objects.get(id = id)
     comments = topic.comments.all().order_by('-created')
     flag=1
-    # Код для абзацев
+    Topic.objects.filter(id=id).update(topic_views=F('topic_views')+1)
+    topic.refresh_from_db
 
+    # topic.topic_views+=1
+    # topic.save() #сохраняет изменения в базе данных
+        
+    # Код для абзацев
     # topics = ''
     # print(type(topics))
     # topics = topic.topic_topic.split('\r\n')

@@ -12,12 +12,12 @@
 {% block content %}
 <main class="container" id="topic">
     <div class="row d-flex justify-content-center">
-        <div class="col-8" id="article">
+        <div class="col-8 article" id="article-topic">
             <div class="card-body topic-card">
                 <h5 class="card-title" id="topic-title">{{ topic.topic_title }} <span class='text-secondary category'>#{{topic.get_themes_type_display}}</span></h5>
                 <div class='row justify-content-start flex icon_forum'>
-                    <p id="distance" class='d-flex'><img class='topic-margin' src={%static 'img/eyes.png' %} id="eyes">
-                        <span>{{topic.topic_views}}</span> <img class='topic-margin' src={%static 'img/watch.png' %} id="watch"> <span
+                    <p id="distance" class='d-flex'><img class='topic-margin forum-img' src={%static 'img/eyes.png' %} id="eyes">
+                        <span>{{topic.topic_views}}</span> <img class='topic-margin forum-img' src={%static 'img/watch.png' %} id="watch"> <span
                             class='topic-date' data-timestamp='{{topic.topic_date|date:"c" }}'>{{topic.topic_date|date:"d.m.Y
                             H:i:s"}}</span></p>
                 </div>
@@ -28,17 +28,32 @@
                 <img src={{ topic.topic_image.url }} alt={{ topic.topic_title }} id="topic-image">
                 {% endif %}
             </div>
-            <ul>
-                {% for comment in comments %}
-                <li><strong>{{ comment.user.username }}</strong>: {{ comment.text }} ({{ comment.created }})</li>
-                {% empty %}
-                <li class="text-white">No comments yet.</li>
-                {% endfor %}
+        </div>
+    </div>
+</main>
 
-                {% csrf_token %}
-                <textarea></textarea>
-                <button>Add Comment</button>
-            </ul>
+<main class="container" id="comment-container">
+    <div class="row d-flex justify-content-center">
+        <div class="col-8 text-white article" id="article-comment">
+            <div class="card-body topic-card">
+                <h5>Коментарии <input type="button" class="btn btn-dark text-white" id="btn-write-comment" value="Написать коментарий"></input></h5>
+            </div>
+            {% for comment in comments %}
+            <div>
+                <strong>{{ comment.user.username }}</strong>: {{ comment.text }} ({{ comment.created }})
+                <input type="button" class="btn btn-dark text-white btn-answer-comment" value="Ответить"></input>
+            </div>
+            {% empty %}
+            <div>
+                <h6 id="no-comment">Здесь пока нет комментариев</h6>
+            </div>
+            {% endfor %}
+            
+            {% csrf_token %}
+            <div class="input-comment">
+                <textarea class="text-dark" placeholder="Напишите здесь свой комментарий" id="comment-area" rows="1"></textarea>
+                <input type="button" class="btn-submit-comment" id="btn-create-comment" value="Добавить">
+            </div>
         </div>
     </div>
 </main>
@@ -47,6 +62,7 @@
 {% block js %}
 <script src={% static 'js/topic.js' %}></script>
 <script src={% static 'js/date.js' %}></script>
+<script src={% static 'js/comment-create.js' %}></script>
 <!-- Код для создания абзацев -->
 <!-- <script src={% static 'js/slice-text.js' %}></script> -->
 {% endblock %}

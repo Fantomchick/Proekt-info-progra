@@ -4,20 +4,23 @@
 .category {
     font-size: 0.8rem;
 }
-#eyes {
-    color: #F1F5F9;
-    height: 1rem;
-    margin-right: 4px;
-    width: 1rem;
+span{
+    margin-top: 3px;
+    margin-left: 4px;
 }
-
 #watch {
-    color: #F1F5F9;
     margin-left: 1rem;
-    margin-right: 4px;
-    height: 1rem;
-    width: 1rem;
 }
 p {
     color: #F1F5F9;
+}
+.distance {
+    color: #F1F5F9;
+    margin-bottom: 0px;
+}
+.forum-img{
+    color: #F1F5F9;
+    margin-right: 4px;
+    height: 1.3rem;
+    width: 1.3rem;
 }

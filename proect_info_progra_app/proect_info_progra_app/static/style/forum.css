@@ -38,3 +38,9 @@ body {
 .card-title{
     color: #F1F5F9;
 }
+.card_forum > *{
+    margin-left: 0.5rem;
+}
+#comments_count{
+    margin-top: 1px;
+}
