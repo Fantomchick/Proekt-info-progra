@@ -17,7 +17,7 @@ urlpatterns= [
     path('logout/',views.logout_view,name='logout'),
     path('forum/<str:themes_type>',views.forum,name='forum'),
     path('forum/topic/<int:id>/',views.topic_template,name='topic-template'),
-    path('comment-create/',views.Comment,name='comment_create'),
+    path('forum/topic/<int:id>/comment-creating/',views.comment_creating, name='comment_creating'),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

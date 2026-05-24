@@ -22,7 +22,10 @@ body {
     header {
         height: 15rem;
     }
-
+    #title-comment{
+        
+        
+    }
     .article{
         width: 90%;
         max-width: 450px;
@@ -76,6 +79,7 @@ body {
     padding: 20px;
     border-radius: 12px;
     border: 1px solid #40444b;
+    width: 90%;
 }
 
 .input-comment textarea {

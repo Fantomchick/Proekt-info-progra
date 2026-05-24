@@ -14,7 +14,7 @@ def index(request):
     try:
         context = {
             'username': request.user.username,
-            }
+        }
         return render(request,"index.html",context)
     except AttributeError as e:
         return render(request,"index.html")
@@ -43,7 +43,7 @@ def auth(request):
         else:
             login(request, user )
             return JsonResponse({'status':'error'})  
-    return render(request)
+    return JsonResponse({'status' : 'error', 'message' : 'Метод не разрешён. Только POST.'}, status=405)
 @csrf_exempt
 def verify(request):
     if request.method == 'POST' and request.POST.get('email'):
@@ -129,7 +129,7 @@ def reg(request):
             print({e})
             return JsonResponse({'status': 'error', 'message' : 'Ошибка при создании'}, status=500)
 
-    return render(request)
+    return JsonResponse({'status' : 'error', 'message' : 'Метод не разрешён. Только POST.'}, status=405)
 
 def onas(request):
     flag=1
@@ -231,4 +231,17 @@ def topic_template(request, id):
     return render(request,"topic-template.html", context)        
     # except:
     #     return render(request,"topic-template.html")     
-    
+def comment_creating(request, id):
+    if request.method == 'POST':
+        text_comment=request.POST.get('textComment')
+        user = User(id = request.user.id)
+        topic = Topic(id = id)
+        Comment.objects.create(
+            user = user,
+            post = topic,
+            text = text_comment
+        )
+        return JsonResponse({'status' : 'success', 'message' : 'Коммент получен'}, status=200)
+
+    return JsonResponse({'status' : 'error', 'message' : 'Метод не разрешён. Только POST.'}, status=405)
+

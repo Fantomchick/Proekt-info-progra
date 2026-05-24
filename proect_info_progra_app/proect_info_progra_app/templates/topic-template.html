@@ -36,11 +36,11 @@
     <div class="row d-flex justify-content-center">
         <div class="col-8 text-white article" id="article-comment">
             <div class="card-body topic-card">
-                <h5>Коментарии <input type="button" class="btn btn-dark text-white" id="btn-write-comment" value="Написать коментарий"></input></h5>
+                <h5 id='title-comment'>Коментарии <input type="button" class="btn btn-dark text-white" id="btn-write-comment" value="Написать коментарий"></input></h5>
             </div>
             {% for comment in comments %}
             <div>
-                <strong>{{ comment.user.username }}</strong>: {{ comment.text }} ({{ comment.created }})
+                <strong>{{ comment.user.username }}</strong>: {{ comment.text }} ({{ comment.created|date:"d.m.Y" }})
                 <input type="button" class="btn btn-dark text-white btn-answer-comment" value="Ответить"></input>
             </div>
             {% empty %}
@@ -51,8 +51,12 @@
             
             {% csrf_token %}
             <div class="input-comment">
-                <textarea class="text-dark" placeholder="Напишите здесь свой комментарий" id="comment-area" rows="1"></textarea>
-                <input type="button" class="btn-submit-comment" id="btn-create-comment" value="Добавить">
+                <div>
+                    <textarea class="text-dark" placeholder="Напишите здесь свой комментарий" id="comment-area" rows="1"></textarea>
+                </div>
+                <div>
+                    <input type="button" class="btn-submit-comment" id="btn-create-comment" value="Добавить">
+                </div>
             </div>
         </div>
     </div>
@@ -62,7 +66,8 @@
 {% block js %}
 <script src={% static 'js/topic.js' %}></script>
 <script src={% static 'js/date.js' %}></script>
-<script src={% static 'js/comment-create.js' %}></script>
+<script src={% static 'js/comment-creating.js' %}></script>
+<script src={% static 'js/comments-appearing.js' %}></script>
 <!-- Код для создания абзацев -->
 <!-- <script src={% static 'js/slice-text.js' %}></script> -->
 {% endblock %}
