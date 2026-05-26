@@ -18,6 +18,7 @@ urlpatterns= [
     path('forum/<str:themes_type>',views.forum,name='forum'),
     path('forum/topic/<int:id>/',views.topic_template,name='topic-template'),
     path('forum/topic/<int:id>/comment-creating/',views.comment_creating, name='comment_creating'),
+    path('forum/topic/<int:id>/comment-deleting/', views.comment_deleting, name='comment_deleting'),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
