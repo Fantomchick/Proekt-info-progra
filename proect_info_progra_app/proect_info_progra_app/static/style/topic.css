@@ -23,8 +23,11 @@ body {
         height: 15rem;
     }
     #title-comment{
+        font-size: 20px;
         
-        
+    }
+    .comment{
+        font-size: 16px;
     }
     .article{
         width: 90%;
@@ -43,6 +46,13 @@ body {
     /* #topic-title{
         margin-top: 0.5rem;
     } */
+
+}
+.topic-date{
+    margin-top: 2.9px;
+    margin-left: 0.4rem;
+    font-size: 16px;
+    color: #72767d
 
 }
 #topic-title {
@@ -70,8 +80,52 @@ body {
 #comment-container{
     margin-top: 1rem;
 }
+
 .btn-answer-comment{
-    margin-left: 0.5rem;
+    background-color: rgba(255, 255, 255, 0.04);
+    color:rgba(255, 255, 255, 0.6) ;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 4px 12px;
+    border-radius: 16px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    margin-top: 0.5rem;
+}
+
+.btn-answer-comment:hover{
+    background-color: rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+
+.comment{
+    background-color: #2f3136;
+    border: 1px solid #36393f;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    padding: 4px 16px 8px 8px;
+    margin-top: 14px;
+    transition: background-color 0.2s;
+}
+.comment:hover {
+    background-color: #32353b;
+}
+
+.comment-header{
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+}
+
+.comment-text{
+    color: #dcddde;
+    font-size: 18px;
+    line-height: 1.5;
+    word-break: break-word;
+    margin-bottom: 12px;
 }
 
 .input-comment {
@@ -105,7 +159,7 @@ body {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-weight: bold;
+    font-weight: arial;
     transition: background 0.2s;
 }
 

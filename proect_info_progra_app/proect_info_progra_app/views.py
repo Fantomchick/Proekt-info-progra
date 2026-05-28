@@ -244,4 +244,15 @@ def comment_creating(request, id):
         return JsonResponse({'status' : 'success', 'message' : 'Коммент получен'}, status=200)
 
     return JsonResponse({'status' : 'error', 'message' : 'Метод не разрешён. Только POST.'}, status=405)
+def comment_deleting(request, id):
+    if request.method == 'POST':
+        comment_id = request.POST.get('commentId')
+        if Comment.objects.filter(id=comment_id).exists():
+            comment = Comment.objects.get(id=comment_id)
+            if comment.user == request.user:
+                comment.delete()
+                return JsonResponse({'status': 'success', 'message': 'Коммент удалён'}, status=200)
+            return JsonResponse({'status': 'error', 'message': 'Это не ваш коммент, вы не можете его удалить.'}, status=403)
+        return JsonResponse({'status': 'error', 'message': 'Коммент с таким id не найден'}, status=404)
+    return JsonResponse({'status': 'error', 'message': 'Метод не разрешён. Только POST.'}, status=405)
 

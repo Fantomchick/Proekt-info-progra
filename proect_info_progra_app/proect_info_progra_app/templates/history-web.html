@@ -5,11 +5,127 @@
 {% block css %}
 <!-- Связывание с CSS файлом -->
 <link rel='icon' href={%static 'img/faicon.png' %}>
-<link rel="stylesheet" href={%static 'style/reg.css' %}>
+<link rel="stylesheet" href={%static 'style/history-web.css' %}>
 </link>
 {% endblock %}
 {% block content %}
-<h1 class="text-white">Нет истории<h1>
+<section class="history-section">
+    <div class="container">
+        <!-- Заголовок раздела -->
+        <div class="history-hero">
+            <span class="badge">Как рождался проект</span>
+            <h1 class="main-title">От идеи к архитектуре<span class="dot">.</span></h1>
+            <p class="lead-text">
+                История о том, как стремление создать идеальную площадку для общения превратилось в оптимизированное
+                веб-приложение. Наш путь от чистого листа до работающей экосистемы.
+            </p>
+        </div>
+
+        <!-- Таймлайн / Хронология -->
+        <div class="timeline">
+
+            <!-- Этап 1: Идея -->
+            <div class="timeline-item">
+                <div class="timeline-badge">
+                    <span class="icon">💡</span>
+                </div>
+                <div class="timeline-panel">
+                    <div class="timeline-meta">Фаза 1: Замысел и Философия</div>
+                    <h3>Почему существующие форумы устарели?</h3>
+                    <p>
+                        Идея проекта родилась из простого наблюдения: большинство современных дискуссионных площадок
+                        перегружены рекламой, тяжелыми скриптами и сложными интерфейсами. Пользователь хочет простого —
+                        быстро поделиться мыслью, получить мгновенный отклик и продолжить чтение без лишних кликов и
+                        бесконечных перезагрузок страниц.
+                    </p>
+                    <p>
+                        <strong>Наша миссия:</strong> Создать «легковесный», но функциональный форум. Мы хотели
+                        совместить классическую древовидную систему веток обсуждения с плавностью современных
+                        SPA-приложений (Single Page Applications), не усложняя при этом кодовую базу.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Этап 2: Выбор стека -->
+            <div class="timeline-item">
+                <div class="timeline-badge">
+                    <span class="icon">🛠️</span>
+                </div>
+                <div class="timeline-panel">
+                    <div class="timeline-meta">Фаза 2: Выбор оружия</div>
+                    <h3>Архитектурный фундамент: Django + JS</h3>
+                    <p>
+                        Выбор технологического стека был осознанным. Нам требовалась надежная серверная часть с мощной
+                        системой безопасности и быстрой работой с базой данных, а также гибкий фронтенд для
+                        динамического интерфейса.
+                    </p>
+                    <div class="tech-list">
+                        <span class="tech-item">Django Python</span>
+                        <span class="tech-item">PostgreSQL</span>
+                        <span class="tech-item">jQuery / AJAX</span>
+                        <span class="tech-item">Vanilla CSS</span>
+                    </div>
+                    <p>
+                        Вместо использования тяжелых фреймворков вроде React или Vue, которые усложнили бы
+                        SEO-оптимизацию форума, мы решили использовать <strong>Django Templates</strong> в связке с
+                        точечными <strong>AJAX-интеграциями</strong>. Это позволило сохранить молниеносную скорость
+                        первоначальной загрузки страниц и отзывчивость интерфейса при отправке данных.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Этап 3: Борьба с оптимизацией -->
+            <div class="timeline-item">
+                <div class="timeline-badge">
+                    <span class="icon">🚀</span>
+                </div>
+                <div class="timeline-panel">
+                    <div class="timeline-meta">Фаза 3: Преодоление трудностей</div>
+                    <h3>Битва за производительность и UX</h3>
+                    <p>
+                        В процессе разработки мы столкнулись с классическими проблемами масштабирования. Как выводить
+                        сотни тем и при этом мгновенно показывать количество комментариев, не перегружая базу данных?
+                    </p>
+                    <p>
+                        Решением стало внедрение агрегации на уровне СУБД с помощью методов <code>.annotate()</code>.
+                        Вместо выполнения отдельного SQL-запроса на подсчет для каждого поста, база делает это за один
+                        проход. А использование атомарных F-выражений (<code>F('topic_views') + 1</code>) спасло систему
+                        от потенциальных багов конкурентного доступа при одновременном просмотре топика сотнями
+                        пользователей.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Этап 4: Результат и будущее -->
+            <div class="timeline-item">
+                <div class="timeline-badge">
+                    <span class="icon">🎯</span>
+                </div>
+                <div class="timeline-panel">
+                    <div class="timeline-meta">Фаза 4: Точка сборки и Будущее</div>
+                    <h3>Что мы имеем сегодня?</h3>
+                    <p>
+                        На данный момент проект представляет собой полностью кастомизированный форум. Нам удалось
+                        реализовать уникальный UI: форма отправки ответа динамически «путешествует» по DOM-дереву под
+                        каждую нажатую кнопку, контекст кнопок меняется адаптивно, а вложенные ветки обсуждений плавно
+                        сворачиваются в аккуратные цепочки.
+                    </p>
+                    <div class="stats-box">
+                        <div class="stat-card">
+                            <span class="stat-num">0 ms</span>
+                            <span class="stat-label">Перезагрузки при комментировании</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-num">1</span>
+                            <span class="stat-label">Запрос к БД для списка тем</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
 {% endblock %}
 {% block js %}
 

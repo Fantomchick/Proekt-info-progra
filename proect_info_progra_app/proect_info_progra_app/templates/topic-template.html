@@ -17,9 +17,7 @@
                 <h5 class="card-title" id="topic-title">{{ topic.topic_title }} <span class='text-secondary category'>#{{topic.get_themes_type_display}}</span></h5>
                 <div class='row justify-content-start flex icon_forum'>
                     <p id="distance" class='d-flex'><img class='topic-margin forum-img' src={%static 'img/eyes.png' %} id="eyes">
-                        <span>{{topic.topic_views}}</span> <img class='topic-margin forum-img' src={%static 'img/watch.png' %} id="watch"> <span
-                            class='topic-date' data-timestamp='{{topic.topic_date|date:"c" }}'>{{topic.topic_date|date:"d.m.Y
-                            H:i:s"}}</span></p>
+                        <span>{{topic.topic_views}}</span> <img class='topic-margin forum-img' src={%static 'img/watch.png' %} id="watch"> <span class='topic-date' data-timestamp='{{topic.topic_date|date:"c" }}'>{{topic.topic_date|date:"d.m.Y H:i:s"}}</span></p>
                 </div>
             </div>
             <div id="topic_text">{{ topic.topic_topic|linebreaks }}</div>
@@ -39,8 +37,18 @@
                 <h5 id='title-comment'>Коментарии <input type="button" class="btn btn-dark text-white" id="btn-write-comment" value="Написать коментарий"></input></h5>
             </div>
             {% for comment in comments %}
+            <div class="comment">
+                <div class=' comment-header'>@{{ comment.user.username }} <span class='topic-date' data-timestamp='{{comment.created|date:"c" }}'>{{comment.created|date:"d.m.Y H:i:s"}}</span>
+                    {% if comment.user == user %}
+                    <input type="button" class="btn btn-dark text-white btn-delete-comment" value="Удалить"
+                        data-comment-id="{{ comment.id }}"></input>
+                    {% endif %}
+                </div>
+                <div class="comment-text">
+                    {{ comment.text }}
+                </div>
+            </div>
             <div>
-                <strong>{{ comment.user.username }}</strong>: {{ comment.text }} ({{ comment.created|date:"d.m.Y" }})
                 <input type="button" class="btn btn-dark text-white btn-answer-comment" value="Ответить"></input>
             </div>
             {% empty %}
@@ -68,6 +76,8 @@
 <script src={% static 'js/date.js' %}></script>
 <script src={% static 'js/comment-creating.js' %}></script>
 <script src={% static 'js/comments-appearing.js' %}></script>
+<script src={% static 'js/date.js' %}></script>
+<script src={% static 'js/comment-deleting.js' %}></script>
 <!-- Код для создания абзацев -->
 <!-- <script src={% static 'js/slice-text.js' %}></script> -->
 {% endblock %}

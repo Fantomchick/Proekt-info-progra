@@ -5,11 +5,64 @@
 {% block css %}
 <!-- Связывание с CSS файлом -->
 <link rel='icon' href={%static 'img/faicon.png' %}>
-<link rel="stylesheet" href={%static 'style/reg.css' %}>
-</link>
+<link rel="stylesheet" href={%static 'style/very-ineteresting.css' %}>
 {% endblock %}
 {% block content %}
-<h1 class="text-white">Нет ничего интересного<h1>
+<section class="project-features">
+    <div class="container">
+        <h2 class="section-title">За кулисами кода <span class="accent-dot">.</span></h2>
+        <p class="section-subtitle">Основные технологические решения, которые делают этот проект живым и отзывчивым.</p>
+
+        <div class="features-grid">
+
+            <!-- Функция 1: AJAX Живые комментарии -->
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>Dynamic Interaction</h3>
+                <p>Реализация системы комментариев на базе <strong>AJAX</strong>. Новые отзывы появляются мгновенно без
+                    перезагрузки страницы, обеспечивая бесшовный пользовательский опыт.</p>
+                <div class="tech-tag">jQuery + JSON</div>
+            </div>
+
+            <!-- Функция 2: Умная логика кнопок -->
+            <div class="feature-card">
+                <div class="feature-icon">🧠</div>
+                <h3>Smart UI Logic</h3>
+                <p>Алгоритм динамического позиционирования формы. Система сама вычисляет контекст клика, переносит поле
+                    ввода под нужный объект и меняет текст кнопок (Добавить/Ответить/Отмена) «на лету».</p>
+                <div class="tech-tag">JavaScript DOM</div>
+            </div>
+
+            <!-- Функция 3: Безопасная аналитика -->
+            <div class="feature-card">
+                <div class="feature-icon">👁️‍🗨️</div>
+                <h3>Atomic View Counting</h3>
+                <p>Использование <strong>Django F-expressions</strong> для подсчета просмотров. Это гарантирует точность
+                    данных при высоких нагрузках, исключая ошибки конкурентной записи в базу данных.</p>
+                <div class="tech-tag">Django ORM</div>
+            </div>
+
+            <!-- Функция 4: Оптимизация запросов -->
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Efficient Database</h3>
+                <p>Метод <strong>.annotate()</strong> позволяет базе данных самостоятельно вычислять количество
+                    комментариев для каждого поста за один запрос. Это снижает нагрузку на сервер в десятки раз.</p>
+                <div class="tech-tag">PostgreSQL / SQLite</div>
+            </div>
+
+            <!-- Функция 5: Время в человеческом формате -->
+            <div class="feature-card">
+                <div class="feature-icon">⏳</div>
+                <h3>Relative Time</h3>
+                <p>Сложный алгоритм плюрализации русского языка («5 минут», «2 минуты», «21 минута»). Время публикации
+                    автоматически пересчитывается в формат «назад» для удобства восприятия.</p>
+                <div class="tech-tag">Localization Logic</div>
+            </div>
+
+        </div>
+    </div>
+</section>
 {% endblock %}
 {% block js %}
 

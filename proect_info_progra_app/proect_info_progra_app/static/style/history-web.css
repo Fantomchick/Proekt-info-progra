@@ -1,0 +1,208 @@
+body{
+    background-color: black;
+}
+.history-section {
+    background-color: #1a1b1e;
+    padding: 100px 0;
+    color: #dbdee1;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+.history-hero {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 80px auto;
+    padding: 0 20px;
+}
+
+.history-hero .badge {
+    background: rgba(114, 137, 218, 0.1);
+    color: #5865f2;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.history-hero .main-title {
+    color: #ffffff;
+    font-size: 42px;
+    margin-top: 20px;
+    font-weight: 800;
+}
+
+.history-hero .dot {
+    color: #5865f2;
+}
+
+.history-hero .lead-text {
+    font-size: 18px;
+    color: #949ba4;
+    line-height: 1.6;
+    margin-top: 15px;
+}
+
+.timeline {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    background: linear-gradient(to bottom, #5865f2, #eb459e, #57f287);
+    top: 0;
+    bottom: 0;
+    left: 40px;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 50px;
+    padding-left: 80px;
+}
+
+.timeline-badge {
+    position: absolute;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: #2b2d31;
+    border: 2px solid #5865f2;
+    left: 18px;
+    top: 5px;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 15px rgba(88, 101, 242, 0.4);
+}
+
+.timeline-badge .icon {
+    font-size: 20px;
+    line-height: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.timeline-panel {
+    background: #232428;
+    border: 1px solid #2f3136;
+    border-radius: 16px;
+    padding: 30px;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, border-color 0.3s;
+}
+
+.timeline-panel:hover {
+    transform: translateY(-5px);
+    border-color: rgba(88, 101, 242, 0.5);
+    background: #27282d;
+}
+
+.timeline-meta {
+    color: #5865f2;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+}
+
+.timeline-panel h3 {
+    color: #ffffff;
+    font-size: 22px;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.timeline-panel p {
+    color: #b5bac1;
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.timeline-panel p:last-child {
+    margin-bottom: 0;
+}
+
+.tech-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 15px 0 20px 0;
+}
+
+.tech-item {
+    background: rgba(255, 255, 255, 0.05);
+    color: #f2f3f5;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.stats-box {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.stat-card {
+    background: #1e1f22;
+    border: 1px solid #2b2d31;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.stat-num {
+    display: block;
+    color: #57f287;
+    font-size: 24px;
+    font-weight: 800;
+}
+
+.stat-label {
+    font-size: 11px;
+    color: #949ba4;
+    text-transform: uppercase;
+    margin-top: 5px;
+}
+
+
+
+@media (max-width: 768px) {
+    .timeline::after {
+        left: 20px;
+    }
+
+    .timeline-item {
+        padding-left: 55px;
+    }
+
+    .timeline-badge {
+        left: -2px;
+        width: 40px;
+        height: 40px;
+    }
+
+    .stats-box {
+        grid-template-columns: 1fr;
+    }
+
+    .history-hero .main-title {
+        font-size: 30px;
+    }
+}
