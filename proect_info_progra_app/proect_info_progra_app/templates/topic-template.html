@@ -38,7 +38,12 @@
             </div>
             {% for comment in comments %}
             <div class="comment">
-                <div class=' comment-header'>@{{ comment.user.username }} <span class='topic-date' data-timestamp='{{comment.created|date:"c" }}'>{{comment.created|date:"d.m.Y H:i:s"}}</span>
+                <div class=' comment-header'>
+                    {% if comment.user == user %}
+                    <div class="date-author">Ты <span class='topic-date' data-timestamp='{{comment.created|date:"c" }}'>{{comment.created|date:"d.m.Y H:i:s"}}</span></div>
+                    {%else%}
+                    <div class="date-author">@{{ comment.user.username }} <span class='topic-date' data-timestamp='{{comment.created|date:"c" }}'>{{comment.created|date:"d.m.Y H:i:s"}}</span></div>
+                    {%endif%}
                     {% if comment.user == user %}
                     <input type="button" class="btn btn-dark text-white btn-delete-comment" value="Удалить"
                         data-comment-id="{{ comment.id }}"></input>
