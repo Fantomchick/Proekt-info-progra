@@ -1,8 +1,7 @@
-function resetToComment(clickElemet){
+function resetToComment(clickElemet, Input){
     const $clickedBtn = $(clickElemet);
-    const $form = $('.input-comment');
+    const $form = $(Input);
     inputComment = $('#comment-area')
-    let createButton = $('#btn-create-comment')
     const isLastActive = $form.is(':visible') && $clickedBtn.next().hasClass('input-comment')
     $('#btn-write-comment').val('Написать комментарий')
     $('.btn-answer-comment').val('Ответить')
@@ -21,12 +20,15 @@ function resetToComment(clickElemet){
 $(document).ready(function(){
     $('#btn-write-comment').click(function(){
         let createButton = $('#btn-create-comment')
+        let inputCreate=$('#input-create')
         createButton.val('Добавить')
-        resetToComment(this);
+
+        resetToComment(this, inputCreate);
     });
     $('.btn-answer-comment').click(function(){
-        let createButton = $('#btn-create-comment')
+        let createButton = $('#btn-answering-comment')
+        let inputAnswer=$('#input-answer')
         createButton.val('Ответить')
-        resetToComment(this);
+        resetToComment(this, inputAnswer);
     });
 })

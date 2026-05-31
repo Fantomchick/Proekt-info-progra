@@ -1,6 +1,6 @@
-function deleteComment(deleteButton) {
-    const $deleteButton = $(deleteButton);
-    const commentIdString = $deleteButton.attr('data-comment-id');
+function deleteComment(deleteBtn) {
+    const deleteButton = $(deleteBtn);
+    const commentIdString = deleteButton.attr('data-comment-id');
     const commentId = parseInt(commentIdString, 10);
     console.log(commentId)
     const CSRF = $('[name=csrfmiddlewaretoken]').val();
@@ -21,13 +21,13 @@ function deleteComment(deleteButton) {
             success:
                 function (data) {
                     console.log('Success: ', data);
-                    $deleteButton.val('Коммент успешно удалён');
-                    $deleteButton.prop('disabled', true);
+                    deleteButton.val('Коммент успешно удалён');
+                    deleteButton.prop('disabled', true);
                 },
             error:
                 function (xhr) {
                     console.log('Error: ', xhr.responseJSON.message);
-                    $deleteButton.val(xhr.responseJSON.message);
+                    deleteButton.val(xhr.responseJSON.message);
                     alert(xhr.responseJSON.message);
                 },
         });

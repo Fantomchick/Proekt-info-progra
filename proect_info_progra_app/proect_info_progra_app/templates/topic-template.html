@@ -40,7 +40,7 @@
             <div class="comment">
                 <div class=' comment-header'>
                     {% if comment.user == user %}
-                    <div class="date-author">Ты <span class='topic-date' data-timestamp='{{comment.created|date:"c" }}'>{{comment.created|date:"d.m.Y H:i:s"}}</span></div>
+                    <div class="date-author">@{{ comment.user.username }}<span class='topic-date' data-timestamp='{{comment.created|date:"c" }}'>{{comment.created|date:"d.m.Y H:i:s"}}</span></div>
                     {%else%}
                     <div class="date-author">@{{ comment.user.username }} <span class='topic-date' data-timestamp='{{comment.created|date:"c" }}'>{{comment.created|date:"d.m.Y H:i:s"}}</span></div>
                     {%endif%}
@@ -51,6 +51,33 @@
                 </div>
                 <div class="comment-text">
                     {{ comment.text }}
+                </div>
+                <div>
+                    {% for answer in answers_comments %}
+                    <div class="comment">
+                        <div class=' comment-header'>
+                            {% if answer.user == user %}
+                            <div class="date-author">@{{ answer.user.username }}<span class='topic-date' data-timestamp='{{comment.created|date:"c" }}'>{{answer.created|date:"d.m.Y H:i:s"}}</span></div>
+                            {%else%}
+                            <div class="date-author">@{{ answer.user.username }} <span class='topic-date' data-timestamp='{{comment.created|date:"c" }}'>{{answer.created|date:"d.m.Y H:i:s"}}</span></div>
+                            {%endif%}
+                            {% if answer.user == user %}
+                            <input type="button" class="btn btn-dark text-white btn-delete-comment" value="Удалить"
+                                data-answer-comment-id="{{ answer.id }}"></input>
+                            {% endif %}
+                        </div>
+                        <div class="comment-text">
+                            {{ answer.text }}
+                        </div>
+                    </div>
+                    <div>
+                        <input type="button" class="btn btn-dark text-white btn-answer-comment" value="Ответить"></input>
+                    </div>
+                    {% empty %}
+                    <div>
+                        <h6 id="no-comment">Здесь пока нет ответов</h6>
+                    </div>
+                    {% endfor %}
                 </div>
             </div>
             <div>
@@ -63,12 +90,20 @@
             {% endfor %}
             
             {% csrf_token %}
-            <div class="input-comment">
+            <div class="input-comment input-create" id='input-create'>
                 <div>
-                    <textarea class="text-dark" placeholder="Напишите здесь свой комментарий" id="comment-area" rows="1"></textarea>
+                    <textarea class="text-dark" placeholder="Напишите здесь свой комментарий" id="comment-creating-area" rows="1"></textarea>
                 </div>
                 <div>
                     <input type="button" class="btn-submit-comment" id="btn-create-comment" value="Добавить">
+                </div>
+            </div>
+            <div class="input-comment input-answer" id='input-answer'>
+                <div>
+                    <textarea class="text-dark" placeholder="Напишите здесь свой ответ" id="comment-answering-area" rows="1"></textarea>
+                </div>
+                <div>
+                    <input type="button" class="btn-submit-comment" id="btn-answering-comment" value="Ответить">
                 </div>
             </div>
         </div>
@@ -79,6 +114,7 @@
 {% block js %}
 <script src={% static 'js/topic.js' %}></script>
 <script src={% static 'js/date.js' %}></script>
+<script src={% static 'js/comment-answering.js' %}></script>
 <script src={% static 'js/comment-creating.js' %}></script>
 <script src={% static 'js/comments-appearing.js' %}></script>
 <script src={% static 'js/date.js' %}></script>

@@ -40,4 +40,10 @@ class Comment(models.Model):
     moderation = models.BooleanField(default=False)
 
     def __str__(self):
-        return f'{self.text}'    
+        return f'{self.text}'   
+class AnswerComment(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    answer_comment = models.ForeignKey(Comment, related_name='answers_comments', on_delete=models.CASCADE)
+    text = models.TextField()
+    created = models.DateTimeField(default=timezone.now, null=True)
+    moderation = models.BooleanField(default=False)

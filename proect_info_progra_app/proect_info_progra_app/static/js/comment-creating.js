@@ -1,6 +1,6 @@
 $('#btn-create-comment').click(
     function() {
-        let textComment= $('#comment-area').val()
+        let textComment= $('#comment-creating-area').val()
         let createButton = $(this)
         const CSRF= $('[name=csrfmiddlewaretoken]').val()
 

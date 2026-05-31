@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from django.http import JsonResponse,HttpResponse
-from .models import Topic, EmailDigest, Comment
+from .models import Topic, EmailDigest, Comment, AnswerComment
 from django.views.decorators.csrf import csrf_exempt
 from django.core.validators import validate_email
 from django.core.exceptions import ValidationError
@@ -244,6 +244,7 @@ def comment_creating(request, id):
         return JsonResponse({'status' : 'success', 'message' : 'Коммент получен'}, status=200)
 
     return JsonResponse({'status' : 'error', 'message' : 'Метод не разрешён. Только POST.'}, status=405)
+
 def comment_deleting(request, id):
     if request.method == 'POST':
         comment_id = request.POST.get('commentId')
@@ -255,4 +256,22 @@ def comment_deleting(request, id):
             return JsonResponse({'status': 'error', 'message': 'Это не ваш коммент, вы не можете его удалить.'}, status=403)
         return JsonResponse({'status': 'error', 'message': 'Коммент с таким id не найден'}, status=404)
     return JsonResponse({'status': 'error', 'message': 'Метод не разрешён. Только POST.'}, status=405)
+
+def comment_answering(request,id):
+    proverka=1
+    print(proverka)
+    if request.method == 'POST':
+        text_comment=request.POST.get('answerCommentText')
+        print(text_comment)
+        user = User(id = request.user.id)
+        answer_comment = Comment(id = id)
+        AnswerComment.objects.create(
+            user = user,
+            answer_comment = answer_comment,
+            text = text_comment
+        )
+        print(text_comment)
+        return JsonResponse({'status' : 'success', 'message' : 'Ответ получен'}, status=200)
+
+    return JsonResponse({'status' : 'error', 'message' : 'Метод не разрешён. Только POST.'}, status=405)
 
