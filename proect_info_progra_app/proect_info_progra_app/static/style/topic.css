@@ -118,6 +118,7 @@ body {
 
 
 .comment{
+    position: relative;
     background-color: #2f3136;
     border: 1px solid #36393f;
     border-radius: 10px;
@@ -203,6 +204,17 @@ body {
 }
 
 .btn-delete-comment{
+    position: absolute;
+    top: 1rem;
+    right: 4px;
+    z-index: 5;
+    height: 30px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     background-color: rgba(237, 66, 69, 0.1);
     color: #ed4245;
     border: 1px solid rgba(237, 66, 69, 0.2);

@@ -10,8 +10,63 @@
 </link> -->
 {% endblock %}
 {% block content %}
+<main>
+    <section class="hero">
+        <div class="container">
+            <p class="eyebrow">Команда разработки</p>
+            <h1>О разработчиках проекта</h1>
+            <p class="lead">
+                Наша команда — специалисты по фронтенду, бэкенду и DevOps. Ниже — краткая презентация каждого участника:
+                навыки, опыт и вклад в проект.
+            </p>
+        </div>
+    </section>
 
+    <section class="team container">
+        <!-- Карточка: Василий Пупкин -->
+        <article class="profile-card">
+            <div class="profile-head">
+                <div class="avatar">ВП</div>
+                <div>
+                    <h2 class="name">Василий Пупкин</h2>
+                    <p class="role">Ведущий фронтенд‑разработчик</p>
+                    <p class="meta">Опыт: 2 года веб‑программирования (шцт‑веб). Специалист по адаптивной верстке и
+                        клиентской логике.</p>
+                </div>
+            </div>
+
+            <div class="profile-body">
+                <h3>Кратко о Василии</h3>
+                <p>
+                    За 2 года обучения и практики в шцт‑веб Василий прошёл путь от верстальщика до разработчика
+                    интерактивных SPA‑интерфейсов.
+                    В проекте отвечает за структуру фронтенда, компонентную архитектуру и доступность интерфейса.
+                </p>
+
+                <h4>Навыки</h4>
+                <ul class="skills">
+                    <li>HTML5, семантическая верстка</li>
+                    <li>CSS3 (Flexbox, Grid, адаптивный дизайн, BEM)</li>
+                    <li>JavaScript (ES6+), модульная архитектура</li>
+                    <li>Работа с API: Fetch, обработка ошибок, асинхронность</li>
+                    <li>Инструменты: Git, npm, простая настройка сборки</li>
+                </ul>
+
+                <h4>Вклад в проект</h4>
+                <ul class="skills">
+                    <li>Модульная структура фронтенда и компоненты комментариев</li>
+                    <li>Оптимизация загрузки статики и изображений</li>
+                    <li>Кроссбраузерное тестирование и мобильная адаптация</li>
+                </ul>
+
+                <div class="profile-footer">
+                    <time datetime="2026-06-01">Обновлено: 01.06.2026</time>
+                    <button class="btn contact" data-email="vasiliy@example.com">Копировать контакт</button>
+                </div>
+            </div>
+        </article>
+    </section>
 {% endblock %}
 {% block js %}
-
+<script src={%static 'js/onas.js' %}></script>
 {% endblock %}
